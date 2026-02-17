@@ -31,7 +31,7 @@ body{
   100%{background-position:0% 50%;}
 }
 
-/* NAVIGATION */
+/* NAV */
 .top-nav{
   position:fixed;
   top:0;
@@ -44,7 +44,6 @@ body{
   backdrop-filter:blur(6px);
   z-index:1000;
 }
-
 .top-nav a{
   color:white;
   text-decoration:none;
@@ -52,7 +51,7 @@ body{
   letter-spacing:2px;
 }
 
-/* WATER BACKGROUND */
+/* WATER */
 #waterCanvas{
   position:fixed;
   top:0;
@@ -78,27 +77,23 @@ section{
   margin-bottom:60px;
   letter-spacing:3px;
 }
-
 .name{
   font-family:'Cormorant Garamond',serif;
   font-size:58px;
   letter-spacing:4px;
   margin:25px 0;
 }
-
 .amp{
   font-family:'Great Vibes',cursive;
   font-size:46px;
   color:var(--gold);
 }
-
 .sub-heading{
   font-family:'Playfair Display',serif;
   font-size:36px;
   letter-spacing:3px;
   margin-bottom:50px;
 }
-
 .sub-heading::after{
   content:"";
   width:70px;
@@ -107,7 +102,6 @@ section{
   display:block;
   margin:20px auto 0 auto;
 }
-
 p{
   line-height:2;
   margin-bottom:20px;
@@ -121,7 +115,6 @@ p{
   flex-wrap:wrap;
   margin-top:80px;
 }
-
 .count-box{
   background:white;
   color:var(--dark);
@@ -140,7 +133,7 @@ p{
   margin:70px auto;
 }
 
-/* RSVP */
+/* RSVP FORM */
 .rsvp input,.rsvp select,.rsvp textarea{
   width:90%;
   max-width:450px;
@@ -149,7 +142,6 @@ p{
   border-radius:10px;
   border:none;
 }
-
 .rsvp button{
   background:white;
   color:var(--dark);
@@ -157,10 +149,52 @@ p{
   border-radius:30px;
   border:none;
   cursor:pointer;
-  margin-top:15px;
 }
 
-/* MUSIC BUTTON */
+/* CONTACT CARDS */
+.contact-card{
+  background:white;
+  color:var(--dark);
+  padding:40px;
+  border-radius:25px;
+  max-width:600px;
+  margin:0 auto;
+  box-shadow:0 15px 40px rgba(0,0,0,0.15);
+  transition:0.4s ease;
+}
+.contact-card:hover{
+  transform:translateY(-8px);
+  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+}
+.contact-card h3{
+  font-family:'Playfair Display', serif;
+  margin-bottom:25px;
+  letter-spacing:2px;
+}
+.contact-buttons{
+  display:flex;
+  justify-content:center;
+  gap:25px;
+  flex-wrap:wrap;
+}
+.call-btn{
+  background:var(--gold);
+  color:white;
+  padding:12px 28px;
+  border-radius:30px;
+  text-decoration:none;
+}
+.call-btn:hover{background:#caa400;}
+.wa-btn{
+  background:#25D366;
+  color:white;
+  padding:12px 28px;
+  border-radius:30px;
+  text-decoration:none;
+}
+.wa-btn:hover{background:#1ebe5d;}
+
+/* MUSIC */
 .music-btn{
   position:fixed;
   bottom:25px;
@@ -183,7 +217,6 @@ footer{
   text-align:center;
   font-family:'Playfair Display',serif;
   letter-spacing:3px;
-  opacity:0.9;
 }
 </style>
 </head>
@@ -219,7 +252,17 @@ The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to 
 Sunday 29th March, 2026
 </p>
 
-<div style="height:120px;"></div>
+<div style="height:100px;"></div>
+
+<!-- COUNTDOWN FIRST -->
+<div class="countdown">
+<div class="count-box"><h3 id="days">00</h3><p>Days</p></div>
+<div class="count-box"><h3 id="hours">00</h3><p>Hours</p></div>
+<div class="count-box"><h3 id="minutes">00</h3><p>Minutes</p></div>
+<div class="count-box"><h3 id="seconds">00</h3><p>Seconds</p></div>
+</div>
+
+<div style="height:140px;"></div>
 
 <h2 class="sub-heading">The Beginning of Forever</h2>
 
@@ -228,13 +271,6 @@ Together we will dance under starry skies, laugh until our sides ache and cheris
 Two hearts, one love, infinite joy begins.
 Join us as we start this new journey hand in hand and heart in heart.
 </p>
-
-<div class="countdown">
-<div class="count-box"><h3 id="days">00</h3><p>Days</p></div>
-<div class="count-box"><h3 id="hours">00</h3><p>Hours</p></div>
-<div class="count-box"><h3 id="minutes">00</h3><p>Minutes</p></div>
-<div class="count-box"><h3 id="seconds">00</h3><p>Seconds</p></div>
-</div>
 
 </section>
 
@@ -272,28 +308,60 @@ width="100%" height="320" style="border:0;border-radius:20px;" loading="lazy">
 <h2 class="sub-heading">Confirm Your Attendance</h2>
 
 <input type="text" id="name" placeholder="Your Full Name"><br>
-
 <select id="attendance">
 <option value="">Will you attend?</option>
 <option>Yes, I will attend</option>
 <option>Sorry, I can't make it</option>
 </select><br>
-
 <select id="guests">
 <option value="">Number of Guests</option>
 <option>1</option><option>2</option><option>3</option><option>4</option>
 </select><br>
-
 <textarea id="message" placeholder="Message (Optional)"></textarea><br>
-
 <button onclick="sendRSVP()">Confirm Attendance</button>
+</section>
 
-<div style="margin-top:50px;">
-<p>Alternatively contact:</p>
-<p>📞 Abdul-Wadud: 024 320 2904</p>
-<p>📞 Rukaya: 024 377 9731</p>
+<!-- CONTACT CARDS -->
+<section>
+<h2 class="sub-heading">RSVP Contacts</h2>
+
+<div style="display:grid; gap:40px; margin-top:60px;">
+
+<div class="contact-card">
+<h3>Abdul-Wadud</h3>
+<div class="contact-buttons">
+<a href="tel:0243202904" class="call-btn">📞 Call</a>
+<a href="https://wa.me/233243202904" target="_blank" class="wa-btn">💬 WhatsApp</a>
+</div>
 </div>
 
+<div class="contact-card">
+<h3>Rukaya</h3>
+<div class="contact-buttons">
+<a href="tel:0243779731" class="call-btn">📞 Call</a>
+<a href="https://wa.me/233243779731" target="_blank" class="wa-btn">💬 WhatsApp</a>
+</div>
+</div>
+
+<div style="opacity:0.8; letter-spacing:2px;">Event Coordinators</div>
+
+<div class="contact-card">
+<h3>Rashad</h3>
+<div class="contact-buttons">
+<a href="tel:0247647739" class="call-btn">📞 Call</a>
+<a href="https://wa.me/233247647739" target="_blank" class="wa-btn">💬 WhatsApp</a>
+</div>
+</div>
+
+<div class="contact-card">
+<h3>Shehu</h3>
+<div class="contact-buttons">
+<a href="tel:0530713449" class="call-btn">📞 Call</a>
+<a href="https://wa.me/233530713449" target="_blank" class="wa-btn">💬 WhatsApp</a>
+</div>
+</div>
+
+</div>
 </section>
 
 <section>
@@ -313,7 +381,6 @@ Abdul-Wadud & Rukaya • 2026
 </div>
 
 <script>
-/* MUSIC */
 function toggleMusic(){
 const music=document.getElementById("bg-music");
 const icon=document.getElementById("musicIcon");
@@ -332,12 +399,11 @@ document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/
 document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
 },1000);
 
-/* WATER RIPPLE */
+/* WATER */
 const waterCanvas=document.getElementById("waterCanvas");
 const waterCtx=waterCanvas.getContext("2d");
 waterCanvas.width=window.innerWidth;
 waterCanvas.height=window.innerHeight;
-
 let ripples=[];
 for(let i=0;i<20;i++){
 ripples.push({
@@ -348,7 +414,6 @@ speed:0.6+Math.random()*0.4,
 opacity:0.18
 });
 }
-
 function animateWater(){
 waterCtx.clearRect(0,0,waterCanvas.width,waterCanvas.height);
 ripples.forEach(r=>{
@@ -369,22 +434,18 @@ requestAnimationFrame(animateWater);
 animateWater();
 
 /* AUTO SCROLL */
-let autoScrollPosition=0;
-let autoScrollActive=true;
-let autoScrollSpeed=0.7;
-
+let pos=0, active=true, speed=0.7;
 function autoScroll(){
-if(!autoScrollActive)return;
-autoScrollPosition+=autoScrollSpeed;
-window.scrollTo(0,autoScrollPosition);
-if(autoScrollPosition<document.body.scrollHeight-window.innerHeight){
+if(!active)return;
+pos+=speed;
+window.scrollTo(0,pos);
+if(pos<document.body.scrollHeight-window.innerHeight){
 requestAnimationFrame(autoScroll);
 }
 }
-
 window.addEventListener("load",()=>{setTimeout(autoScroll,2000);});
-window.addEventListener("wheel",()=>{autoScrollActive=false;});
-window.addEventListener("touchstart",()=>{autoScrollActive=false;});
+window.addEventListener("wheel",()=>{active=false;});
+window.addEventListener("touchstart",()=>{active=false;});
 
 /* RSVP */
 function sendRSVP(){
