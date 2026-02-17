@@ -5,98 +5,173 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdul-Wadud & Rukaya | Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-:root {
-  --primary: #c56a1b;
-  --secondary: #4b2e2e;
-  --bg: #fff8f2;
+:root{
+  --primary:#d2691e;
+  --coffee:#4b2e2e;
 }
 
-* { margin:0; padding:0; box-sizing:border-box; }
+*{margin:0;padding:0;box-sizing:border-box;}
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  background: var(--bg);
-  color: var(--secondary);
-  scroll-behavior: smooth;
+body{
+  font-family:'Montserrat',sans-serif;
+  background:linear-gradient(to bottom,#fff8f2,#fdeee3);
+  color:var(--coffee);
+  scroll-behavior:smooth;
+  position:relative;
 }
 
-h1,h2,h3 {
-  font-family: 'Playfair Display', serif;
+/* Soft Frame */
+body::after{
+  content:"";
+  position:fixed;
+  top:20px;left:20px;right:20px;bottom:20px;
+  border:1px solid rgba(210,105,30,0.15);
+  pointer-events:none;
+  z-index:999;
 }
 
-section {
-  padding: 70px 20px;
-  text-align: center;
+/* Monogram */
+.monogram{
+  position:fixed;
+  top:50%;left:50%;
+  transform:translate(-50%,-50%);
+  font-family:'Cormorant Garamond',serif;
+  font-size:180px;
+  color:var(--primary);
+  opacity:0.03;
+  letter-spacing:20px;
+  z-index:-3;
 }
 
-.card {
-  background:white;
-  padding:30px;
-  border-radius:18px;
-  box-shadow:0 10px 25px rgba(0,0,0,0.05);
-  max-width:500px;
-  margin:20px auto;
+/* Glow */
+#softGlow{
+  position:fixed;
+  top:0;left:0;
+  width:100%;height:100%;
+  z-index:-2;
 }
 
-.fade-in {
-  opacity:0;
-  transform:translateY(30px);
-  transition:all 1s ease;
+/* Sections */
+section{
+  padding:90px 20px;
+  text-align:center;
 }
-.fade-in.show {
-  opacity:1;
-  transform:translateY(0);
+
+h1,h2,h3{
+  font-family:'Cormorant Garamond',serif;
+}
+
+h2{
+  font-size:32px;
+  margin-bottom:25px;
+  position:relative;
+}
+
+h2::after{
+  content:"";
+  width:50px;
+  height:3px;
+  background:var(--primary);
+  display:block;
+  margin:15px auto 0 auto;
+}
+
+p{
+  font-size:17px;
+  line-height:1.8;
 }
 
 /* Opening Screen */
-.open-screen {
+.open-screen{
   height:100vh;
-  background:linear-gradient(rgba(75,46,46,0.6),rgba(75,46,46,0.6)),
-  url('https://images.unsplash.com/photo-1519741497674-611481863552') center/cover;
   display:flex;
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  color:white;
   text-align:center;
 }
 
-.open-screen h1 { font-size:40px; margin-bottom:15px; }
+.open-screen h1{
+  font-size:42px;
+}
 
-.open-screen button {
+.open-screen button{
   background:var(--primary);
-  border:none;
-  padding:15px 35px;
-  border-radius:30px;
-  font-size:16px;
   color:white;
+  border:none;
+  padding:14px 35px;
+  border-radius:30px;
   cursor:pointer;
+  margin-top:25px;
+}
+
+/* Names */
+.name{
+  font-size:48px;
+  margin-top:10px;
+  letter-spacing:2px;
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeName 1.5s ease forwards;
+}
+
+.name:nth-of-type(2){
+  animation-delay:0.4s;
+}
+
+@keyframes fadeName{
+  to{opacity:1;transform:translateY(0);}
 }
 
 /* Countdown */
-.countdown {
+.countdown{
   display:flex;
   justify-content:center;
   gap:15px;
   flex-wrap:wrap;
-  margin-top:30px;
+  margin-top:40px;
 }
 
-.count-box {
+.count-box{
   background:white;
-  padding:20px;
-  border-radius:12px;
-  min-width:80px;
-  box-shadow:0 5px 15px rgba(0,0,0,0.05);
+  padding:25px;
+  border-radius:18px;
+  min-width:90px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.05);
 }
 
-.count-box h3 { color:var(--primary); }
+.count-box h3{
+  font-size:26px;
+  color:var(--primary);
+}
+
+/* Event Cards */
+.card{
+  background:white;
+  padding:40px;
+  border-radius:24px;
+  box-shadow:0 20px 50px rgba(0,0,0,0.05);
+  max-width:550px;
+  margin:30px auto;
+}
+
+.event-item{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  margin:8px 0;
+}
+
+.event-item span{
+  color:var(--primary);
+}
 
 /* RSVP */
-.rsvp input,.rsvp select,.rsvp textarea {
+.rsvp input,.rsvp select,.rsvp textarea{
   width:90%;
   max-width:400px;
   padding:12px;
@@ -105,46 +180,47 @@ section {
   border:1px solid #ddd;
 }
 
-.rsvp button {
+.rsvp button{
   background:var(--primary);
   color:white;
-  padding:14px 35px;
   border:none;
+  padding:14px 35px;
   border-radius:30px;
   cursor:pointer;
-  margin-top:10px;
 }
 
-/* Floating Music Button */
-.music-btn {
+button:hover{
+  opacity:0.9;
+  transform:scale(1.03);
+  transition:0.3s;
+}
+
+/* Music Button */
+.music-btn{
   position:fixed;
   bottom:20px;
   right:20px;
-  background:white;
-  width:55px;
-  height:55px;
+  width:55px;height:55px;
+  background:var(--primary);
+  color:white;
   border-radius:50%;
-  box-shadow:0 5px 15px rgba(0,0,0,0.1);
   display:flex;
   justify-content:center;
   align-items:center;
   cursor:pointer;
-  font-size:20px;
-}
-
-footer {
-  padding:40px 20px;
-  background:white;
 }
 </style>
 </head>
 
 <body>
 
-<!-- OPENING -->
+<div class="monogram">A R</div>
+<canvas id="softGlow"></canvas>
+
+<!-- Opening -->
 <div class="open-screen" id="opening">
-  <h1>Abdul-Wadud & Rukaya</h1>
-  <p>Sunday 29th March, 2026</p>
+  <h1>Wedding Invitation</h1>
+  <p style="margin-top:10px;">29th March 2026</p>
   <button onclick="openInvitation()">Open Invitation</button>
 </div>
 
@@ -154,84 +230,88 @@ footer {
 
 <div id="content" style="display:none;">
 
-<!-- Names + Countdown -->
-<section class="fade-in">
-  <h1>Abdul-Wadud Abdul Wahab</h1>
-  <h2>&</h2>
-  <h1>Rukaya Basiru</h1>
+<section>
 
-  <div class="countdown">
-    <div class="count-box"><h3 id="days">00</h3><p>Days</p></div>
-    <div class="count-box"><h3 id="hours">00</h3><p>Hours</p></div>
-    <div class="count-box"><h3 id="minutes">00</h3><p>Minutes</p></div>
-    <div class="count-box"><h3 id="seconds">00</h3><p>Seconds</p></div>
-  </div>
+<p style="max-width:800px;margin:0 auto 40px auto;font-size:18px;">
+The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to the Nikkah of their beloved children
+</p>
+
+<h1 class="name">Abdul-Wadud Abdul Wahab</h1>
+
+<h2 style="color:var(--primary);margin:15px 0;">&</h2>
+
+<h1 class="name">Rukaya Basiru</h1>
+
+<p style="margin-top:25px;font-size:20px;color:var(--primary);">
+Sunday 29th March, 2026
+</p>
+
+<h2>The Beginning of Forever</h2>
+
+<p style="max-width:800px;margin:0 auto;">
+Together we will dance under starry skies, laugh until our sides ache and cherish every moment we’re given.
+Two hearts, one love, infinite joy begins.
+Join us as we start this new journey hand in hand and heart in heart.
+</p>
+
+<div class="countdown">
+<div class="count-box"><h3 id="days">00</h3><p>Days</p></div>
+<div class="count-box"><h3 id="hours">00</h3><p>Hours</p></div>
+<div class="count-box"><h3 id="minutes">00</h3><p>Minutes</p></div>
+<div class="count-box"><h3 id="seconds">00</h3><p>Seconds</p></div>
+</div>
+
 </section>
 
-<!-- Event Details -->
-<section class="fade-in">
-  <h2>Event Details</h2>
+<section>
 
-  <div class="card">
-    <h3>Nikkah Ceremony</h3>
-    <p>Sunday 29th March, 2026</p>
-    <p>10:00 AM</p>
-  </div>
+<h2>Event Details</h2>
 
-  <div class="card">
-    <h3>Reception</h3>
-    <p>Sunday 29th March, 2026</p>
-    <p>12:00 PM</p>
-  </div>
+<div class="card">
+<h3>Nikkah Ceremony</h3>
+<div class="event-item"><span>📅</span><p>Sunday, 29th March 2026</p></div>
+<div class="event-item"><span>🕰</span><p>10:00 AM</p></div>
+</div>
 
-  <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding%20of%20Abdul-Wadud%20%26%20Rukaya&dates=20260329T100000/20260329T140000&details=Join%20us%20for%20our%20Nikkah%20and%20Reception"
-  target="_blank"
-  style="display:inline-block;margin-top:20px;padding:12px 25px;background:#c56a1b;color:white;border-radius:25px;text-decoration:none;">
-  Add to Calendar
-  </a>
+<div class="card">
+<h3>Reception</h3>
+<div class="event-item"><span>📅</span><p>Sunday, 29th March 2026</p></div>
+<div class="event-item"><span>🕰</span><p>12:00 PM</p></div>
+</div>
+
 </section>
 
-<!-- RSVP -->
-<section class="rsvp fade-in">
-  <h2>Confirm Your Attendance</h2>
+<section class="rsvp">
+<h2>Confirm Your Attendance</h2>
 
-  <input type="text" id="name" placeholder="Your Full Name" required><br>
+<input type="text" id="name" placeholder="Your Full Name"><br>
 
-  <select id="attendance" required>
-    <option value="">Will you attend?</option>
-    <option value="Yes, I will attend">Yes, I will attend</option>
-    <option value="Sorry, I can't make it">Sorry, I can't make it</option>
-  </select><br>
+<select id="attendance">
+<option value="">Will you attend?</option>
+<option>Yes, I will attend</option>
+<option>Sorry, I can't make it</option>
+</select><br>
 
-  <select id="guests" required>
-    <option value="">Number of Guests</option>
-    <option value="1">1 Guest</option>
-    <option value="2">2 Guests</option>
-    <option value="3">3 Guests</option>
-    <option value="4">4 Guests</option>
-  </select><br>
+<select id="guests">
+<option value="">Number of Guests</option>
+<option>1</option><option>2</option><option>3</option><option>4</option>
+</select><br>
 
-  <textarea id="message" placeholder="Message (Optional)"></textarea><br>
+<textarea id="message" placeholder="Message (Optional)"></textarea><br>
 
-  <button onclick="sendRSVP()">Confirm Attendance</button>
+<button onclick="sendRSVP()">Confirm Attendance</button>
 </section>
 
-<!-- Blessing -->
-<section class="fade-in">
-  <h2>Qur’anic Blessing</h2>
-  <div class="card">
-    <p>
-    “And among His signs is that He created for you spouses from among yourselves
-    that you may find tranquility in them; and He placed between you affection and mercy.”
-    </p>
-    <br>
-    <strong>— Surah Ar-Rum 30:21</strong>
-  </div>
+<section>
+<p style="font-style:italic;max-width:800px;margin:0 auto;">
+Your presence and sincere prayers will bring us immense joy and blessings on this special day.
+Jazaakumullahu Khairan.
+</p>
 </section>
 
-<footer class="fade-in">
-  <h3>Abdul-Wadud & Rukaya</h3>
-  <p>29th March 2026</p>
+<footer style="padding:40px;text-align:center;">
+<h3>Abdul-Wadud & Rukaya</h3>
+<p>29th March 2026</p>
 </footer>
 
 </div>
@@ -240,33 +320,36 @@ footer {
 
 <script>
 function openInvitation(){
-  document.getElementById("opening").style.display="none";
-  document.getElementById("content").style.display="block";
-  document.getElementById("bg-music").play();
+const opening=document.getElementById("opening");
+opening.style.transition="opacity 1s ease";
+opening.style.opacity="0";
+setTimeout(()=>{
+opening.style.display="none";
+document.getElementById("content").style.display="block";
+document.getElementById("bg-music").play();
+},1000);
 }
 
 function toggleMusic(){
-  const music=document.getElementById("bg-music");
-  music.paused ? music.play() : music.pause();
+const music=document.getElementById("bg-music");
+music.paused?music.play():music.pause();
 }
 
 function sendRSVP(){
-  const name=document.getElementById("name").value;
-  const attendance=document.getElementById("attendance").value;
-  const guests=document.getElementById("guests").value;
-  const message=document.getElementById("message").value;
+const name=document.getElementById("name").value;
+const attendance=document.getElementById("attendance").value;
+const guests=document.getElementById("guests").value;
+const message=document.getElementById("message").value;
 
-  if(!name || !attendance || !guests){
-    alert("Please fill all required fields.");
-    return;
-  }
+if(!name||!attendance||!guests){
+alert("Please fill all required fields.");
+return;
+}
 
-  alert("Thank you for confirming your attendance 🤎🧡");
+const groom="233243202904";
+const second="233243779731";
 
-  const groomNumber="233243202904";
-  const secondNumber="233243779731";
-
-  const text=`Assalamu Alaikum,
+const text=`Assalamu Alaikum,
 
 My name is ${name}.
 Response: ${attendance}
@@ -277,36 +360,44 @@ Message: ${message}
 Wedding: Abdul-Wadud & Rukaya
 Date: 29th March 2026`;
 
-  window.open(`https://wa.me/${groomNumber}?text=${encodeURIComponent(text)}`,"_blank");
-
-  setTimeout(()=>{
-    window.open(`https://wa.me/${secondNumber}?text=${encodeURIComponent(text)}`,"_blank");
-  },1500);
+window.open(`https://wa.me/${groom}?text=${encodeURIComponent(text)}`,"_blank");
+setTimeout(()=>window.open(`https://wa.me/${second}?text=${encodeURIComponent(text)}`,"_blank"),1500);
 }
 
 const eventDate=new Date("March 29, 2026 10:00:00").getTime();
-
 setInterval(()=>{
-  const now=new Date().getTime();
-  const distance=eventDate-now;
-
-  document.getElementById("days").innerText=Math.floor(distance/(1000*60*60*24));
-  document.getElementById("hours").innerText=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-  document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/(1000*60));
-  document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
+const now=new Date().getTime();
+const distance=eventDate-now;
+document.getElementById("days").innerText=Math.floor(distance/(1000*60*60*24));
+document.getElementById("hours").innerText=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/(1000*60));
+document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
 },1000);
 
-const faders=document.querySelectorAll('.fade-in');
-const observer=new IntersectionObserver(entries=>{
-  entries.forEach(entry=>{
-    if(entry.isIntersecting){
-      entry.target.classList.add('show');
-    }
-  });
-},{threshold:0.2});
-
-faders.forEach(fader=>observer.observe(fader));
+/* Glow */
+const canvas=document.getElementById("softGlow");
+const ctx=canvas.getContext("2d");
+canvas.width=window.innerWidth;
+canvas.height=window.innerHeight;
+let particles=[];
+for(let i=0;i<40;i++){
+particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,radius:Math.random()*2,speed:Math.random()*0.3});
+}
+function animateGlow(){
+ctx.clearRect(0,0,canvas.width,canvas.height);
+ctx.fillStyle="rgba(210,105,30,0.08)";
+particles.forEach(p=>{
+ctx.beginPath();
+ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
+ctx.fill();
+p.y-=p.speed;
+if(p.y<0)p.y=canvas.height;
+});
+requestAnimationFrame(animateGlow);
+}
+animateGlow();
 </script>
 
 </body>
 </html>
+
