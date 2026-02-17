@@ -41,7 +41,7 @@ body{
   justify-content:center;
   gap:30px;
   padding:15px;
-  background:rgba(0,0,0,0.3);
+  background:rgba(0,0,0,0.35);
   backdrop-filter:blur(6px);
   z-index:1000;
 }
@@ -53,12 +53,7 @@ body{
   letter-spacing:1px;
 }
 
-.top-nav a.active{
-  color:var(--gold);
-  font-weight:500;
-}
-
-/* WATER BACKGROUND */
+/* WATER CANVAS */
 #waterCanvas{
   position:fixed;
   top:0;
@@ -69,7 +64,7 @@ body{
   pointer-events:none;
 }
 
-section{
+section, footer{
   position:relative;
   z-index:2;
   padding:110px 20px;
@@ -176,6 +171,13 @@ section{
   box-shadow:0 5px 15px rgba(0,0,0,0.2);
   z-index:1000;
 }
+
+footer{
+  padding:60px 20px;
+  font-family:'Playfair Display', serif;
+  letter-spacing:2px;
+  opacity:0.9;
+}
 </style>
 </head>
 
@@ -279,12 +281,23 @@ width="100%" height="300" style="border:0;border-radius:15px;" loading="lazy">
 <button onclick="sendRSVP()">Confirm Attendance</button>
 </section>
 
+<section>
+<p style="max-width:800px;margin:0 auto;font-style:italic;font-size:18px;">
+Your presence and sincere prayers will bring us immense joy and blessings on this special day.
+Jazaakumullahu Khairan.
+</p>
+</section>
+
+<footer>
+<div style="width:60px;height:2px;background:#ffd700;margin:0 auto 20px auto;"></div>
+Abdul-Wadud & Rukaya • 2026
+</footer>
+
 <div class="music-btn" onclick="toggleMusic()">
 <span id="musicIcon">▶</span>
 </div>
 
 <script>
-/* MUSIC */
 function toggleMusic(){
 const music=document.getElementById("bg-music");
 const icon=document.getElementById("musicIcon");
