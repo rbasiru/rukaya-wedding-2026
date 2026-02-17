@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdul-Wadud & Rukaya | Wedding Invitation</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@300;400;500&family=Amiri&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400;500&family=Amiri&display=swap" rel="stylesheet">
 
 <style>
 :root{
@@ -32,7 +32,7 @@ body{
   100%{background-position:0% 50%;}
 }
 
-/* Navigation */
+/* NAVIGATION */
 .top-nav{
   position:fixed;
   top:0;
@@ -64,9 +64,25 @@ body{
   background:rgba(0,0,0,0.6);
 }
 
-/* Sections */
+/* WATER CANVAS */
+#waterCanvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:1;
+  pointer-events:none;
+}
+
+section, .music-btn {
+  position:relative;
+  z-index:2;
+}
+
+/* SECTIONS */
 section{
-  padding:100px 20px;
+  padding:110px 20px;
   text-align:center;
 }
 
@@ -81,38 +97,45 @@ section{
   transform:translateY(0);
 }
 
-h1,h2,h3{
-  font-family:'Cormorant Garamond',serif;
-}
-
+/* TYPOGRAPHY */
 .arabic{
   font-family:'Amiri',serif;
-  font-size:36px;
-  margin-bottom:30px;
-}
-
-/* Names */
-.name{
-  font-size:48px;
+  font-size:38px;
+  margin-bottom:40px;
   letter-spacing:2px;
+}
+
+.name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:52px;
+  letter-spacing:3px;
+  margin-top:15px;
+}
+
+h2{
+  font-family:'Great Vibes',cursive;
+  font-size:42px;
+  color:var(--gold);
+}
+
+.sub-heading{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  letter-spacing:2px;
+  margin-bottom:30px;
   position:relative;
-  margin-top:10px;
 }
 
-.name::before{
+.sub-heading::after{
   content:"";
-  position:absolute;
-  width:120%;
-  height:120%;
-  top:-10%;
-  left:-10%;
-  background:radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
-  border-radius:50%;
-  filter:blur(20px);
-  z-index:-1;
+  width:60px;
+  height:2px;
+  background:var(--gold);
+  display:block;
+  margin:15px auto 0 auto;
 }
 
-/* Countdown */
+/* COUNTDOWN */
 .countdown{
   display:flex;
   justify-content:center;
@@ -129,7 +152,7 @@ h1,h2,h3{
   min-width:80px;
 }
 
-/* Cards */
+/* CARDS */
 .card{
   background:white;
   color:var(--dark);
@@ -158,7 +181,7 @@ h1,h2,h3{
   cursor:pointer;
 }
 
-/* Opening */
+/* OPENING */
 .open-screen{
   height:100vh;
   display:flex;
@@ -178,18 +201,7 @@ h1,h2,h3{
   margin-top:20px;
 }
 
-/* Water Canvas */
-#waterCanvas{
-  position:fixed;
-  top:0;
-  left:0;
-  width:100%;
-  height:100%;
-  z-index:0;
-  pointer-events:none;
-}
-
-/* Music */
+/* MUSIC BUTTON */
 .music-btn{
   position:fixed;
   bottom:20px;
@@ -248,7 +260,10 @@ The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to 
 Sunday 29th March, 2026
 </p>
 
-<h2>The Beginning of Forever</h2>
+<div style="height:60px;"></div>
+
+<h2 class="sub-heading">The Beginning of Forever</h2>
+
 <p style="max-width:800px;margin:0 auto;">
 Together we will dance under starry skies, laugh until our sides ache and cherish every moment we’re given.
 Two hearts, one love, infinite joy begins.
@@ -265,7 +280,7 @@ Join us as we start this new journey hand in hand and heart in heart.
 </section>
 
 <section id="event" class="fade-section">
-<h2>Event Details</h2>
+<h2 class="sub-heading">Event Details</h2>
 
 <div class="card">
 <h3>Nikkah Ceremony</h3>
@@ -283,7 +298,7 @@ Join us as we start this new journey hand in hand and heart in heart.
 </section>
 
 <section id="location" class="fade-section">
-<h2>Location</h2>
+<h2 class="sub-heading">Location</h2>
 <div class="card">
 <p>📍 Foster International School, Cotton Avenue – Kokomlemle</p>
 <iframe 
@@ -294,7 +309,7 @@ width="100%" height="300" style="border:0;border-radius:15px;" loading="lazy">
 </section>
 
 <section id="rsvp" class="fade-section rsvp">
-<h2>Confirm Your Attendance</h2>
+<h2 class="sub-heading">Confirm Your Attendance</h2>
 
 <input type="text" id="name" placeholder="Your Full Name"><br>
 
@@ -328,7 +343,6 @@ document.getElementById("bg-music").play();
 startAutoScroll();
 }
 
-/* Music */
 function toggleMusic(){
 const music=document.getElementById("bg-music");
 const icon=document.getElementById("musicIcon");
@@ -336,93 +350,33 @@ if(music.paused){music.play();icon.innerHTML="❚❚";}
 else{music.pause();icon.innerHTML="▶";}
 }
 
-/* Countdown */
-const eventDate=new Date("March 29, 2026 10:00:00").getTime();
-setInterval(()=>{
-const now=new Date().getTime();
-const distance=eventDate-now;
-document.getElementById("days").innerText=Math.floor(distance/(1000*60*60*24));
-document.getElementById("hours").innerText=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/(1000*60));
-document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
-},1000);
-
-/* Fade */
-const sections=document.querySelectorAll('.fade-section');
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add('show');}
-});
-},{threshold:0.2});
-sections.forEach(section=>observer.observe(section));
-
-/* Nav Highlight & Shrink */
-const navLinks=document.querySelectorAll(".top-nav a");
-window.addEventListener("scroll",()=>{
-let current="";
-sections.forEach(section=>{
-if(window.scrollY>=section.offsetTop-120){
-current=section.getAttribute("id");
-}
-});
-navLinks.forEach(link=>{
-link.classList.remove("active");
-if(link.getAttribute("href")==="#"+current){
-link.classList.add("active");
-}
-});
-if(window.scrollY>80){
-document.querySelector(".top-nav").classList.add("shrink");
-}else{
-document.querySelector(".top-nav").classList.remove("shrink");
-}
-});
-
-/* Auto Scroll */
-let autoScrollActive=true;
-let autoScrollPosition=0;
-
-function autoScroll(){
-if(!autoScrollActive)return;
-autoScrollPosition+=0.3;
-window.scrollTo(0,autoScrollPosition);
-if(autoScrollPosition<document.body.scrollHeight-window.innerHeight){
-requestAnimationFrame(autoScroll);
-}
-}
-
-function startAutoScroll(){
-setTimeout(()=>{autoScroll();},2500);
-}
-
-window.addEventListener("wheel",()=>{autoScrollActive=false;});
-window.addEventListener("touchstart",()=>{autoScrollActive=false;});
-
-/* Water Ripple */
+/* WATER RIPPLE */
 const waterCanvas=document.getElementById("waterCanvas");
 const waterCtx=waterCanvas.getContext("2d");
 waterCanvas.width=window.innerWidth;
 waterCanvas.height=window.innerHeight;
+
 let ripples=[];
-for(let i=0;i<15;i++){
+for(let i=0;i<20;i++){
 ripples.push({
 x:Math.random()*waterCanvas.width,
 y:Math.random()*waterCanvas.height,
-radius:Math.random()*100,
-speed:0.3+Math.random()*0.3,
-opacity:0.05
+radius:Math.random()*50,
+speed:0.6+Math.random()*0.4,
+opacity:0.18
 });
 }
+
 function animateWater(){
 waterCtx.clearRect(0,0,waterCanvas.width,waterCanvas.height);
 ripples.forEach(r=>{
 waterCtx.beginPath();
 waterCtx.arc(r.x,r.y,r.radius,0,Math.PI*2);
 waterCtx.strokeStyle=`rgba(255,255,255,${r.opacity})`;
-waterCtx.lineWidth=2;
+waterCtx.lineWidth=3;
 waterCtx.stroke();
 r.radius+=r.speed;
-if(r.radius>200){
+if(r.radius>180){
 r.radius=0;
 r.x=Math.random()*waterCanvas.width;
 r.y=Math.random()*waterCanvas.height;
@@ -432,23 +386,10 @@ requestAnimationFrame(animateWater);
 }
 animateWater();
 
-/* RSVP */
-function sendRSVP(){
-const name=document.getElementById("name").value;
-const attendance=document.getElementById("attendance").value;
-const guests=document.getElementById("guests").value;
-if(!name||!attendance||!guests){alert("Please fill all required fields.");return;}
-const text=`Assalamu Alaikum,
-
-My name is ${name}.
-Response: ${attendance}
-Number of Guests: ${guests}
-
-Wedding: Abdul-Wadud & Rukaya
-Date: 29th March 2026`;
-window.open(`https://wa.me/233243202904?text=${encodeURIComponent(text)}`,"_blank");
-setTimeout(()=>window.open(`https://wa.me/233243779731?text=${encodeURIComponent(text)}`,"_blank"),1500);
-}
+window.addEventListener("resize",()=>{
+waterCanvas.width=window.innerWidth;
+waterCanvas.height=window.innerHeight;
+});
 </script>
 
 </body>
