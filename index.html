@@ -5,243 +5,184 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdul-Wadud & Rukaya | Wedding Invitation</title>
 
-<!-- FAVICON -->
-<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml"
+href="data:image/svg+xml,
 <svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
 <rect width='100' height='100' fill='%238b4513'/>
-<text x='50%' y='55%' dominant-baseline='middle' text-anchor='middle'
-font-family='Playfair Display, serif'
-font-size='42'
-fill='%23ffd700'>A♡R</text>
+<text x='50%' y='55%' text-anchor='middle' font-size='40' fill='%23ffd700'>A♡R</text>
 </svg>">
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400;500&family=Amiri&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400&family=Amiri&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  --gold:#ffd700;
-  --dark:#8b4513;
+--gold:#ffd700;
+--brown:#8b4513;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-
 body{
-  font-family:'Montserrat',sans-serif;
-  background:linear-gradient(-45deg,#d2691e,#8b4513,#c56a1b,#a0522d);
-  background-size:400% 400%;
-  animation:gradientMove 20s ease infinite;
-  color:white;
-  overflow-x:hidden;
+font-family:'Montserrat',sans-serif;
+background:linear-gradient(-45deg,#d2691e,#8b4513,#c56a1b,#a0522d);
+background-size:400% 400%;
+animation:bgMove 20s ease infinite;
+color:white;
+overflow-x:hidden;
 }
 
-/* ISLAMIC OVERLAY */
-body::before{
-  content:"";
-  position:fixed;
-  inset:0;
-  background-image:url("https://www.transparenttextures.com/patterns/arabesque.png");
-  opacity:0.05;
-  z-index:-3;
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
 }
 
-/* GRADIENT ANIMATION */
-@keyframes gradientMove{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
-
-/* SCROLL PROGRESS BAR */
+/* Scroll Progress */
 #progressBar{
-  position:fixed;
-  top:0;
-  left:0;
-  height:3px;
-  width:0%;
-  background:linear-gradient(
-    90deg,
-    #caa400,
-    #ffd700,
-    #fff6b0,
-    #ffd700,
-    #caa400
-  );
-  z-index:3000;
-  box-shadow:
-    0 0 6px rgba(255,215,0,0.5),
-    0 0 12px rgba(255,215,0,0.3);
-  transition:width 0.2s ease-out;
+position:fixed;
+top:0;left:0;
+height:3px;width:0%;
+background:linear-gradient(90deg,#caa400,#ffd700,#fff6b0,#ffd700,#caa400);
+box-shadow:0 0 6px rgba(255,215,0,0.5);
+z-index:3000;
 }
 
-/* SPLASH */
-#splashScreen{
-  position:fixed;
-  inset:0;
-  background:linear-gradient(135deg,#8b4513,#a0522d);
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  z-index:2000;
-  transition:1s ease;
+/* Navigation */
+nav{
+position:fixed;
+top:0;width:100%;
+display:flex;
+justify-content:center;
+gap:30px;
+padding:15px;
+background:rgba(0,0,0,0.4);
+backdrop-filter:blur(6px);
+z-index:1000;
 }
-.splash-content{text-align:center;}
-.splash-content h1{font-size:60px;}
-.splash-content button{
-  margin-top:20px;
-  padding:12px 30px;
-  border:none;
-  border-radius:30px;
-  background:#ffd700;
-  color:#8b4513;
-  cursor:pointer;
+nav a{
+color:white;text-decoration:none;
+font-size:13px;letter-spacing:2px;
 }
+nav a:hover{color:var(--gold);}
 
-/* NAV */
-.top-nav{
-  position:fixed;
-  top:0;
-  width:100%;
-  display:flex;
-  justify-content:center;
-  gap:40px;
-  padding:18px;
-  background:rgba(0,0,0,0.35);
-  backdrop-filter:blur(6px);
-  z-index:1000;
-}
-.top-nav a{
-  color:white;
-  text-decoration:none;
-  font-size:14px;
-  letter-spacing:2px;
-}
-.top-nav a.active{color:var(--gold);}
-
-/* CANVAS */
-#waterCanvas,#goldParticles{
-  position:fixed;
-  inset:0;
-  z-index:-2;
-  pointer-events:none;
-}
-
-/* SECTIONS */
+/* Sections */
 section{
-  padding:170px 20px;
-  text-align:center;
-  max-width:1000px;
-  margin:0 auto;
-  opacity:0;
-  transform:translateY(40px);
-  transition:1.2s ease;
-}
-section.show{
-  opacity:1;
-  transform:translateY(0);
+padding:160px 20px;
+text-align:center;
+max-width:900px;
+margin:auto;
 }
 
-/* GOLD SHIMMER */
-.gold-shimmer{
-  background: linear-gradient(
-    110deg,
-    #caa400 10%,
-    #ffd700 25%,
-    #fff6b0 40%,
-    #ffd700 55%,
-    #caa400 70%
-  );
-  background-size:250% auto;
-  color:transparent;
-  -webkit-background-clip:text;
-  background-clip:text;
-  animation:shimmerMove 8s linear infinite;
-}
-@keyframes shimmerMove{
-  0%{background-position:-200% center;}
-  100%{background-position:200% center;}
+/* Typography */
+.arabic{
+font-family:'Amiri';
+font-size:40px;
+margin-bottom:50px;
 }
 
-/* TYPOGRAPHY */
-.arabic{font-family:'Amiri';font-size:40px;margin-bottom:60px;}
 .name{
-  font-family:'Cormorant Garamond';
-  font-size:58px;
-  letter-spacing:4px;
-  margin:25px 0;
-  text-shadow:0 0 15px rgba(255,215,0,0.3);
-}
-.amp{font-family:'Great Vibes';font-size:46px;color:var(--gold);}
-.sub-heading{font-family:'Playfair Display';font-size:36px;margin-bottom:50px;}
-p{line-height:2;margin-bottom:20px;}
-
-/* COUNTDOWN */
-.countdown{display:flex;justify-content:center;gap:35px;flex-wrap:wrap;margin-top:80px;}
-.count-box{
-  background:white;
-  color:var(--dark);
-  padding:30px;
-  border-radius:18px;
+font-family:'Cormorant Garamond';
+font-size:55px;
+margin:20px 0;
+text-shadow:0 0 15px rgba(255,215,0,0.3);
 }
 
-/* CARD */
+.amp{
+font-family:'Great Vibes';
+font-size:45px;
+color:var(--gold);
+}
+
+.sub{
+font-family:'Playfair Display';
+font-size:32px;
+margin-bottom:40px;
+color:var(--gold);
+}
+
+.countdown{
+display:flex;
+justify-content:center;
+gap:30px;
+flex-wrap:wrap;
+margin-top:70px;
+}
+
+.box{
+background:white;
+color:var(--brown);
+padding:25px;
+border-radius:15px;
+min-width:90px;
+}
+
 .card{
-  background:white;
-  color:var(--dark);
-  padding:55px;
-  border-radius:25px;
-  max-width:650px;
-  margin:70px auto;
+background:white;
+color:var(--brown);
+padding:40px;
+border-radius:20px;
+margin:40px auto;
+max-width:600px;
 }
 
 /* RSVP */
-.rsvp input,.rsvp select{
-  width:90%;
-  max-width:450px;
-  padding:12px;
-  margin:14px 0;
-  border-radius:10px;
-  border:none;
+input,select{
+width:90%;
+max-width:400px;
+padding:10px;
+margin:10px 0;
+border-radius:8px;
+border:none;
 }
-.rsvp button{
-  background:white;
-  color:var(--dark);
-  padding:14px 35px;
-  border-radius:30px;
-  border:none;
-  cursor:pointer;
+button{
+background:white;
+color:var(--brown);
+padding:12px 25px;
+border:none;
+border-radius:25px;
+cursor:pointer;
+margin-top:10px;
 }
 
-/* CONTACT CARDS */
-.contact-card{
-  background:white;
-  color:var(--dark);
-  padding:40px;
-  border-radius:25px;
-  max-width:600px;
-  margin:0 auto;
-  box-shadow:0 15px 40px rgba(0,0,0,0.15);
+/* Contact Cards */
+.contact{
+background:white;
+color:var(--brown);
+padding:30px;
+border-radius:20px;
+margin:20px auto;
+max-width:500px;
 }
-.contact-buttons{display:flex;justify-content:center;gap:20px;flex-wrap:wrap;}
-.call-btn,.wa-btn{
-  padding:12px 28px;
-  border-radius:30px;
-  text-decoration:none;
-  color:white;
+.contact a{
+display:inline-block;
+margin:10px;
+padding:10px 20px;
+border-radius:25px;
+text-decoration:none;
+color:white;
 }
-.call-btn{background:var(--gold);}
-.wa-btn{background:#25D366;}
+.call{background:var(--gold);}
+.wa{background:#25D366;}
 
-.music-btn{
-  position:fixed;
-  bottom:25px;
-  right:25px;
-  background:white;
-  color:var(--dark);
-  width:60px;height:60px;
-  border-radius:50%;
-  display:flex;justify-content:center;align-items:center;
-  cursor:pointer;
+footer{
+padding:60px 20px;
+font-family:'Playfair Display';
+letter-spacing:2px;
+}
+
+/* Music Button */
+.music{
+position:fixed;
+bottom:20px;right:20px;
+background:white;
+color:var(--brown);
+width:55px;height:55px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
 }
 </style>
 </head>
@@ -250,54 +191,59 @@ p{line-height:2;margin-bottom:20px;}
 
 <div id="progressBar"></div>
 
-<div id="splashScreen">
-<div class="splash-content">
-<h1 class="gold-shimmer">A ♡ R</h1>
-<p>Welcome to Our Nikkah</p>
-<button onclick="enterSite()">Enter</button>
-</div>
-</div>
-
-<nav class="top-nav">
+<nav>
 <a href="#home">HOME</a>
 <a href="#event">EVENT</a>
 <a href="#location">LOCATION</a>
 <a href="#rsvp">RSVP</a>
 </nav>
 
-<canvas id="waterCanvas"></canvas>
-<canvas id="goldParticles"></canvas>
-
-<audio id="bg-music" loop>
+<audio id="music" loop>
 <source src="wedding-music.mp3" type="audio/mpeg">
 </audio>
 
 <section id="home">
 <p class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
-<p>The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to the Nikkah of their beloved children</p>
-<h1 class="name gold-shimmer">Abdul-Wadud Abdul Wahab</h1>
-<div class="amp">&</div>
-<h1 class="name gold-shimmer">Rukaya Basiru</h1>
-<p style="font-size:22px;">Sunday 29th March, 2026</p>
 
-<div style="height:100px;"></div>
+<p>The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to the Nikkah of their beloved children</p>
+
+<h1 class="name">Abdul-Wadud Abdul Wahab</h1>
+<div class="amp">&</div>
+<h1 class="name">Rukaya Basiru</h1>
+
+<p style="font-size:20px;margin-top:20px;">Sunday 29th March, 2026</p>
 
 <div class="countdown">
-<div class="count-box"><h3 id="days"></h3><p>Days</p></div>
-<div class="count-box"><h3 id="hours"></h3><p>Hours</p></div>
-<div class="count-box"><h3 id="minutes"></h3><p>Minutes</p></div>
-<div class="count-box"><h3 id="seconds"></h3><p>Seconds</p></div>
+<div class="box"><h3 id="days"></h3><p>Days</p></div>
+<div class="box"><h3 id="hours"></h3><p>Hours</p></div>
+<div class="box"><h3 id="minutes"></h3><p>Minutes</p></div>
+<div class="box"><h3 id="seconds"></h3><p>Seconds</p></div>
 </div>
 
-<div style="height:140px;"></div>
-
-<h2 class="sub-heading gold-shimmer">The Beginning of Forever</h2>
+<h2 class="sub" style="margin-top:100px;">The Beginning of Forever</h2>
 <p>Together we will dance under starry skies, laugh until our sides ache and cherish every moment we’re given. Two hearts, one love, infinite joy begins.</p>
 </section>
 
-<section id="rsvp" class="rsvp">
-<h2 class="sub-heading gold-shimmer">Confirm Your Attendance</h2>
-<input type="text" id="name" placeholder="Your Full Name"><br>
+<section id="event">
+<h2 class="sub">Event Details</h2>
+<div class="card">
+<p>📅 Sunday, 29th March 2026</p>
+<p>🕰 10:00 AM</p>
+<p>📍 Foster International School, Cotton Avenue – Kokomlemle</p>
+</div>
+</section>
+
+<section id="location">
+<h2 class="sub">Location</h2>
+<div class="card">
+<iframe src="https://www.google.com/maps?q=Foster+International+School+Kokomlemle&output=embed"
+width="100%" height="300" style="border:0;border-radius:15px;"></iframe>
+</div>
+</section>
+
+<section id="rsvp">
+<h2 class="sub">Confirm Attendance</h2>
+<input type="text" id="nameInput" placeholder="Your Full Name"><br>
 <select id="attendance">
 <option value="">Will you attend?</option>
 <option>Yes, I will attend</option>
@@ -307,31 +253,27 @@ p{line-height:2;margin-bottom:20px;}
 <option value="">Number of Guests</option>
 <option>1</option><option>2</option><option>3</option><option>4</option>
 </select><br>
-<button onclick="sendRSVP()">Confirm Attendance</button>
+<button onclick="sendRSVP()">Submit</button>
 </section>
 
 <section>
-<h2 class="sub-heading gold-shimmer">RSVP Contacts</h2>
-<div style="display:grid;gap:40px;margin-top:60px;">
-<div class="contact-card">
+<h2 class="sub">RSVP Contacts</h2>
+
+<div class="contact">
 <h3>Rashad</h3>
-<div class="contact-buttons">
-<a href="tel:0247647739" class="call-btn">Call</a>
-<a href="https://wa.me/233247647739" class="wa-btn">WhatsApp</a>
+<a href="tel:0247647739" class="call">Call</a>
+<a href="https://wa.me/233247647739" class="wa">WhatsApp</a>
 </div>
-</div>
-<div class="contact-card">
+
+<div class="contact">
 <h3>Shehu</h3>
-<div class="contact-buttons">
-<a href="tel:0530713449" class="call-btn">Call</a>
-<a href="https://wa.me/233530713449" class="wa-btn">WhatsApp</a>
-</div>
-</div>
+<a href="tel:0530713449" class="call">Call</a>
+<a href="https://wa.me/233530713449" class="wa">WhatsApp</a>
 </div>
 </section>
 
 <section>
-<p style="max-width:750px;margin:0 auto;font-style:italic;font-size:20px;">
+<p style="max-width:700px;margin:auto;font-style:italic;">
 Your presence and sincere prayers will bring us immense joy and blessings on this special day. Jazaakumullahu Khairan.
 </p>
 </section>
@@ -340,38 +282,19 @@ Your presence and sincere prayers will bring us immense joy and blessings on thi
 Abdul-Wadud & Rukaya • 2026
 </footer>
 
-<div class="music-btn" onclick="toggleMusic()">
-<span id="musicIcon">▶</span>
-</div>
+<div class="music" onclick="toggleMusic()">▶</div>
 
 <script>
-function enterSite(){
-document.getElementById("splashScreen").style.opacity="0";
-setTimeout(()=>{
-document.getElementById("splashScreen").style.display="none";
-fadeInMusic();
-startAutoMove();
-},800);
-}
 
-const music=document.getElementById("bg-music");
-const icon=document.getElementById("musicIcon");
+/* Scroll Progress */
+window.addEventListener("scroll",()=>{
+const scrollTop=window.scrollY;
+const height=document.body.scrollHeight-window.innerHeight;
+const percent=(scrollTop/height)*100;
+document.getElementById("progressBar").style.width=percent+"%";
+});
 
-function toggleMusic(){
-if(music.paused){music.play();icon.innerHTML="❚❚";}
-else{music.pause();icon.innerHTML="▶";}
-}
-
-function fadeInMusic(){
-music.volume=0;
-music.play();
-let fade=setInterval(()=>{
-if(music.volume<0.6){music.volume+=0.05;}
-else{clearInterval(fade);}
-},300);
-}
-
-/* COUNTDOWN */
+/* Countdown */
 const eventDate=new Date("March 29, 2026 10:00:00").getTime();
 setInterval(()=>{
 const now=new Date().getTime();
@@ -382,44 +305,22 @@ document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/
 document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
 },1000);
 
-/* SCROLL PROGRESS */
-window.addEventListener("scroll",()=>{
-const scrollTop=window.scrollY;
-const docHeight=document.body.scrollHeight-window.innerHeight;
-const percent=(scrollTop/docHeight)*100;
-document.getElementById("progressBar").style.width=percent+"%";
-});
-
-/* AUTO MOVE */
-let autoActive=true;
-let autoSpeed=0.4;
-let autoPos=0;
-
-function autoMove(){
-if(!autoActive)return;
-autoPos+=autoSpeed;
-window.scrollTo({top:autoPos,behavior:"auto"});
-if(autoPos<document.body.scrollHeight-window.innerHeight){
-requestAnimationFrame(autoMove);
-}
-}
-
-function startAutoMove(){
-setTimeout(()=>{autoMove();},1500);
-}
-
-window.addEventListener("wheel",()=>{autoActive=false;});
-window.addEventListener("touchstart",()=>{autoActive=false;});
-
 /* RSVP */
 function sendRSVP(){
-const name=document.getElementById("name").value;
+const name=document.getElementById("nameInput").value;
 const attendance=document.getElementById("attendance").value;
 const guests=document.getElementById("guests").value;
-if(!name||!attendance||!guests){alert("Please fill all required fields.");return;}
-const text=`Assalamu Alaikum,\n\nMy name is ${name}.\nResponse: ${attendance}\nGuests: ${guests}\n\nWedding: Abdul-Wadud & Rukaya\nDate: 29th March 2026`;
+if(!name||!attendance||!guests){alert("Please fill all fields");return;}
+const text=`Assalamu Alaikum,\n\nName: ${name}\nResponse: ${attendance}\nGuests: ${guests}\n\nWedding: Abdul-Wadud & Rukaya`;
 window.open(`https://wa.me/233243202904?text=${encodeURIComponent(text)}`,"_blank");
 setTimeout(()=>{window.open(`https://wa.me/233243779731?text=${encodeURIComponent(text)}`,"_blank");},1500);
+}
+
+/* Music */
+const music=document.getElementById("music");
+function toggleMusic(){
+if(music.paused){music.play();document.querySelector(".music").innerText="❚❚";}
+else{music.pause();document.querySelector(".music").innerText="▶";}
 }
 </script>
 
