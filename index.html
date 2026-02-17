@@ -163,13 +163,11 @@ p{
   transition:0.4s ease;
 }
 .contact-card:hover{
-  transform:translateY(-8px);
-  box-shadow:0 20px 60px rgba(0,0,0,0.25);
+  transform:translateY(-6px);
 }
 .contact-card h3{
   font-family:'Playfair Display', serif;
   margin-bottom:25px;
-  letter-spacing:2px;
 }
 .contact-buttons{
   display:flex;
@@ -254,7 +252,6 @@ Sunday 29th March, 2026
 
 <div style="height:100px;"></div>
 
-<!-- COUNTDOWN FIRST -->
 <div class="countdown">
 <div class="count-box"><h3 id="days">00</h3><p>Days</p></div>
 <div class="count-box"><h3 id="hours">00</h3><p>Hours</p></div>
@@ -321,7 +318,6 @@ width="100%" height="320" style="border:0;border-radius:20px;" loading="lazy">
 <button onclick="sendRSVP()">Confirm Attendance</button>
 </section>
 
-<!-- CONTACT CARDS -->
 <section>
 <h2 class="sub-heading">RSVP Contacts</h2>
 
@@ -399,19 +395,19 @@ document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/
 document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
 },1000);
 
-/* WATER */
+/* SOFT WATER */
 const waterCanvas=document.getElementById("waterCanvas");
 const waterCtx=waterCanvas.getContext("2d");
 waterCanvas.width=window.innerWidth;
 waterCanvas.height=window.innerHeight;
 let ripples=[];
-for(let i=0;i<20;i++){
+for(let i=0;i<12;i++){
 ripples.push({
 x:Math.random()*waterCanvas.width,
 y:Math.random()*waterCanvas.height,
-radius:Math.random()*50,
-speed:0.6+Math.random()*0.4,
-opacity:0.18
+radius:Math.random()*80,
+speed:0.3,
+opacity:0.12
 });
 }
 function animateWater(){
@@ -420,10 +416,10 @@ ripples.forEach(r=>{
 waterCtx.beginPath();
 waterCtx.arc(r.x,r.y,r.radius,0,Math.PI*2);
 waterCtx.strokeStyle=`rgba(255,255,255,${r.opacity})`;
-waterCtx.lineWidth=3;
+waterCtx.lineWidth=2;
 waterCtx.stroke();
 r.radius+=r.speed;
-if(r.radius>180){
+if(r.radius>200){
 r.radius=0;
 r.x=Math.random()*waterCanvas.width;
 r.y=Math.random()*waterCanvas.height;
@@ -432,20 +428,6 @@ r.y=Math.random()*waterCanvas.height;
 requestAnimationFrame(animateWater);
 }
 animateWater();
-
-/* AUTO SCROLL */
-let pos=0, active=true, speed=0.7;
-function autoScroll(){
-if(!active)return;
-pos+=speed;
-window.scrollTo(0,pos);
-if(pos<document.body.scrollHeight-window.innerHeight){
-requestAnimationFrame(autoScroll);
-}
-}
-window.addEventListener("load",()=>{setTimeout(autoScroll,2000);});
-window.addEventListener("wheel",()=>{active=false;});
-window.addEventListener("touchstart",()=>{active=false;});
 
 /* RSVP */
 function sendRSVP(){
