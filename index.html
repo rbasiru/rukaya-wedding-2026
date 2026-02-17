@@ -3,70 +3,107 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Abdul-Wadud & Rukaya | Wedding Invitation</title>
-
-<!-- Favicon -->
-<link rel="icon" type="image/svg+xml"
-href="data:image/svg+xml,
-<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'>
-<rect width='100' height='100' fill='%238b4513'/>
-<text x='50%' y='55%' text-anchor='middle' font-size='40' fill='%23ffd700'>A♡R</text>
-</svg>">
+<title>Abdul-Wadud & Rukaya | 2026</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@500;600&family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400&family=Amiri&display=swap" rel="stylesheet">
 
 <style>
 :root{
 --gold:#ffd700;
---brown:#8b4513;
+--brown:#5c2e0d;
+--orange:#d2691e;
 }
 
+/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{
 font-family:'Montserrat',sans-serif;
-background:linear-gradient(-45deg,#d2691e,#8b4513,#c56a1b,#a0522d);
-background-size:400% 400%;
-animation:bgMove 20s ease infinite;
 color:white;
 overflow-x:hidden;
+background:linear-gradient(120deg,#d2691e,#5c2e0d);
 }
 
-@keyframes bgMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
+/* GOLD SHIMMER */
+.shimmer{
+background:linear-gradient(90deg,#caa400,#ffd700,#fff6b0,#ffd700,#caa400);
+background-size:200% auto;
+color:transparent;
+background-clip:text;
+-webkit-background-clip:text;
+animation:shine 4s linear infinite;
+}
+@keyframes shine{
+to{background-position:200% center;}
 }
 
-/* Scroll Progress */
-#progressBar{
+/* SPLASH SCREEN */
+#splash{
 position:fixed;
 top:0;left:0;
-height:3px;width:0%;
-background:linear-gradient(90deg,#caa400,#ffd700,#fff6b0,#ffd700,#caa400);
-box-shadow:0 0 6px rgba(255,215,0,0.5);
-z-index:3000;
+width:100%;height:100%;
+background:linear-gradient(135deg,#d2691e,#5c2e0d);
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+z-index:5000;
+text-align:center;
+}
+#enterBtn{
+margin-top:30px;
+padding:12px 30px;
+border-radius:30px;
+border:none;
+background:white;
+color:#5c2e0d;
+cursor:pointer;
+font-weight:bold;
 }
 
-/* Navigation */
+/* BUBBLES */
+.bubble{
+position:absolute;
+bottom:-100px;
+background:rgba(255,255,255,0.08);
+border-radius:50%;
+animation:rise linear infinite;
+}
+@keyframes rise{
+to{transform:translateY(-110vh);}
+}
+
+/* NAV */
 nav{
 position:fixed;
-top:0;width:100%;
+top:0;
+width:100%;
 display:flex;
 justify-content:center;
-gap:30px;
+gap:40px;
 padding:15px;
 background:rgba(0,0,0,0.4);
 backdrop-filter:blur(6px);
 z-index:1000;
 }
 nav a{
-color:white;text-decoration:none;
-font-size:13px;letter-spacing:2px;
+color:white;
+text-decoration:none;
+font-size:13px;
+letter-spacing:2px;
 }
 nav a:hover{color:var(--gold);}
 
-/* Sections */
+/* PROGRESS BAR */
+#progress{
+position:fixed;
+top:0;left:0;
+height:3px;width:0%;
+background:linear-gradient(90deg,#caa400,#ffd700,#fff6b0,#ffd700);
+z-index:2000;
+}
+
+/* SECTIONS */
 section{
 padding:160px 20px;
 text-align:center;
@@ -74,18 +111,17 @@ max-width:900px;
 margin:auto;
 }
 
-/* Typography */
+/* TYPOGRAPHY */
 .arabic{
 font-family:'Amiri';
-font-size:40px;
-margin-bottom:50px;
+font-size:38px;
+margin-bottom:40px;
 }
 
 .name{
 font-family:'Cormorant Garamond';
-font-size:55px;
+font-size:58px;
 margin:20px 0;
-text-shadow:0 0 15px rgba(255,215,0,0.3);
 }
 
 .amp{
@@ -97,18 +133,18 @@ color:var(--gold);
 .sub{
 font-family:'Playfair Display';
 font-size:32px;
-margin-bottom:40px;
+margin:60px 0 30px;
 color:var(--gold);
 }
 
+/* COUNTDOWN */
 .countdown{
 display:flex;
 justify-content:center;
 gap:30px;
 flex-wrap:wrap;
-margin-top:70px;
+margin-top:60px;
 }
-
 .box{
 background:white;
 color:var(--brown);
@@ -117,6 +153,7 @@ border-radius:15px;
 min-width:90px;
 }
 
+/* CARDS */
 .card{
 background:white;
 color:var(--brown);
@@ -124,14 +161,15 @@ padding:40px;
 border-radius:20px;
 margin:40px auto;
 max-width:600px;
+box-shadow:0 10px 30px rgba(0,0,0,0.2);
 }
 
 /* RSVP */
 input,select{
 width:90%;
 max-width:400px;
-padding:10px;
-margin:10px 0;
+padding:12px;
+margin:12px 0;
 border-radius:8px;
 border:none;
 }
@@ -142,10 +180,11 @@ padding:12px 25px;
 border:none;
 border-radius:25px;
 cursor:pointer;
+font-weight:bold;
 margin-top:10px;
 }
 
-/* Contact Cards */
+/* CONTACT */
 .contact{
 background:white;
 color:var(--brown);
@@ -166,30 +205,38 @@ color:white;
 .wa{background:#25D366;}
 
 footer{
-padding:60px 20px;
+padding:80px 20px;
 font-family:'Playfair Display';
 letter-spacing:2px;
 }
 
-/* Music Button */
+/* MUSIC */
 .music{
 position:fixed;
-bottom:20px;right:20px;
+bottom:25px;
+right:25px;
 background:white;
 color:var(--brown);
-width:55px;height:55px;
+width:60px;height:60px;
 border-radius:50%;
 display:flex;
 align-items:center;
 justify-content:center;
 cursor:pointer;
+font-size:18px;
+z-index:2000;
 }
 </style>
 </head>
 
 <body>
 
-<div id="progressBar"></div>
+<div id="splash">
+<h1 class="shimmer" style="font-family:'Great Vibes';font-size:55px;">Abdul-Wadud & Rukaya</h1>
+<button id="enterBtn">Enter Invitation</button>
+</div>
+
+<div id="progress"></div>
 
 <nav>
 <a href="#home">HOME</a>
@@ -203,15 +250,15 @@ cursor:pointer;
 </audio>
 
 <section id="home">
-<p class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
+<p class="arabic shimmer">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
 
 <p>The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to the Nikkah of their beloved children</p>
 
-<h1 class="name">Abdul-Wadud Abdul Wahab</h1>
+<h1 class="name shimmer">Abdul-Wadud Abdul Wahab</h1>
 <div class="amp">&</div>
-<h1 class="name">Rukaya Basiru</h1>
+<h1 class="name shimmer">Rukaya Basiru</h1>
 
-<p style="font-size:20px;margin-top:20px;">Sunday 29th March, 2026</p>
+<p style="margin-top:25px;">Sunday 29th March, 2026</p>
 
 <div class="countdown">
 <div class="box"><h3 id="days"></h3><p>Days</p></div>
@@ -220,7 +267,7 @@ cursor:pointer;
 <div class="box"><h3 id="seconds"></h3><p>Seconds</p></div>
 </div>
 
-<h2 class="sub" style="margin-top:100px;">The Beginning of Forever</h2>
+<h2 class="sub">The Beginning of Forever</h2>
 <p>Together we will dance under starry skies, laugh until our sides ache and cherish every moment we’re given. Two hearts, one love, infinite joy begins.</p>
 </section>
 
@@ -286,15 +333,24 @@ Abdul-Wadud & Rukaya • 2026
 
 <script>
 
-/* Scroll Progress */
-window.addEventListener("scroll",()=>{
-const scrollTop=window.scrollY;
-const height=document.body.scrollHeight-window.innerHeight;
-const percent=(scrollTop/height)*100;
-document.getElementById("progressBar").style.width=percent+"%";
-});
+/* SPLASH */
+document.getElementById("enterBtn").onclick=function(){
+document.getElementById("splash").style.display="none";
+document.getElementById("music").play();
+}
 
-/* Countdown */
+/* BUBBLES */
+for(let i=0;i<25;i++){
+let bubble=document.createElement("div");
+bubble.className="bubble";
+bubble.style.width=Math.random()*40+20+"px";
+bubble.style.height=bubble.style.width;
+bubble.style.left=Math.random()*100+"%";
+bubble.style.animationDuration=Math.random()*10+10+"s";
+document.body.appendChild(bubble);
+}
+
+/* COUNTDOWN */
 const eventDate=new Date("March 29, 2026 10:00:00").getTime();
 setInterval(()=>{
 const now=new Date().getTime();
@@ -310,20 +366,45 @@ function sendRSVP(){
 const name=document.getElementById("nameInput").value;
 const attendance=document.getElementById("attendance").value;
 const guests=document.getElementById("guests").value;
-if(!name||!attendance||!guests){alert("Please fill all fields");return;}
-const text=`Assalamu Alaikum,\n\nName: ${name}\nResponse: ${attendance}\nGuests: ${guests}\n\nWedding: Abdul-Wadud & Rukaya`;
-window.open(`https://wa.me/233243202904?text=${encodeURIComponent(text)}`,"_blank");
-setTimeout(()=>{window.open(`https://wa.me/233243779731?text=${encodeURIComponent(text)}`,"_blank");},1500);
+if(!name||!attendance||!guests){
+alert("Please fill all fields");
+return;
+}
+const text=`Assalamu Alaikum,
+Name: ${name}
+Response: ${attendance}
+Guests: ${guests}
+Wedding: Abdul-Wadud & Rukaya
+Date: 29th March 2026`;
+
+window.open(`https://wa.me/233243202904?text=${encodeURIComponent(text)}`);
+setTimeout(()=>{
+window.open(`https://wa.me/233243779731?text=${encodeURIComponent(text)}`);
+},1200);
 }
 
-/* Music */
-const music=document.getElementById("music");
+/* MUSIC */
 function toggleMusic(){
-if(music.paused){music.play();document.querySelector(".music").innerText="❚❚";}
-else{music.pause();document.querySelector(".music").innerText="▶";}
+const music=document.getElementById("music");
+if(music.paused){
+music.play();
+document.querySelector(".music").innerText="❚❚";
+}else{
+music.pause();
+document.querySelector(".music").innerText="▶";
 }
+}
+
+/* SCROLL PROGRESS */
+window.addEventListener("scroll",()=>{
+const winScroll=document.body.scrollTop||document.documentElement.scrollTop;
+const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+const scrolled=(winScroll/height)*100;
+document.getElementById("progress").style.width=scrolled+"%";
+});
 </script>
 
 </body>
 </html>
+
 
