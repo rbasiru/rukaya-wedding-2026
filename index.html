@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rukaya & Abdul-Wadud Wedding</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+<style>
+body{
+margin:0;
+font-family:'Poppins',sans-serif;
+background:linear-gradient(to bottom,#4a2c2a,#d2691e);
+color:white;
+text-align:center;
+}
+
+.section{
+padding:60px 20px;
+}
+
+h1{
+font-family:'Playfair Display',serif;
+font-size:38px;
+}
+
+.names{
+font-size:28px;
+margin:20px 0;
+}
+
+.verse{
+background:rgba(0,0,0,0.3);
+padding:25px;
+border-radius:15px;
+margin:30px auto;
+max-width:700px;
+font-style:italic;
+line-height:1.6;
+}
+
+.details{
+font-size:18px;
+margin-top:20px;
+}
+
+.countdown{
+font-size:22px;
+margin-top:25px;
+font-weight:bold;
+}
+
+.button{
+display:inline-block;
+padding:12px 25px;
+margin:10px;
+background:#ff8c00;
+color:white;
+text-decoration:none;
+border-radius:30px;
+font-weight:bold;
+transition:0.3s;
+}
+
+.button:hover{
+background:#ffa500;
+}
+
+.music-btn{
+position:fixed;
+bottom:20px;
+right:20px;
+background:#ff8c00;
+border:none;
+padding:12px 18px;
+border-radius:50px;
+color:white;
+font-weight:bold;
+cursor:pointer;
+}
+
+iframe{
+border-radius:15px;
+margin-top:20px;
+}
+footer{
+margin-top:50px;
+padding:20px;
+background:rgba(0,0,0,0.3);
+}
+</style>
+</head>
+
+<body>
+
+<div class="section">
+
+<h1>In the Name of Allah, the Most Gracious, the Most Merciful</h1>
+
+<div class="names">
+Rukaya Basiru<br>&<br>
+Abdul-Wadud Abdul-Wahab
+</div>
+
+<div class="verse">
+“And among His Signs is that He created for you mates from among yourselves,
+that you may dwell in tranquility with them, and He has put love and mercy between your hearts.
+Indeed in that are Signs for those who reflect.”
+<br><br>
+— Surah Ar-Rum 30:21
+</div>
+
+<div class="details">
+📅 Sunday, 29th March 2026<br>
+⏰ 10:00 AM<br>
+📍 Foster International School,<br>
+Cotton Avenue – Kokomlemle
+</div>
+
+<div class="countdown" id="countdown"></div>
+
+<a class="button" href="https://wa.me/233530713449" target="_blank">
+RSVP Shehu
+</a>
+
+<a class="button" href="https://wa.me/233247647739" target="_blank">
+RSVP Rashad
+</a>
+
+<h2>Wedding Location</h2>
+
+<iframe
+width="90%"
+height="300"
+loading="lazy"
+allowfullscreen
+src="https://www.google.com/maps?q=Foster+International+School+Kokomlemle&output=embed">
+</iframe>
+
+</div>
+
+<footer>
+With love 🤎 Rukaya & Abdul-Wadud
+</footer>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+<source src="music.mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-btn" onclick="toggleMusic()">🎵 Play Music</button>
+
+<script>
+var weddingDate = new Date("March 29, 2026 10:00:00").getTime();
+
+var x = setInterval(function() {
+var now = new Date().getTime();
+var distance = weddingDate - now;
+
+var days = Math.floor(distance/(1000*60*60*24));
+var hours = Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes = Math.floor((distance%(1000*60*60))/(1000*60));
+var seconds = Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML =
+"⏳ " + days + " Days " + hours + " Hours " +
+minutes + " Minutes " + seconds + " Seconds";
+
+if(distance<0){
+clearInterval(x);
+document.getElementById("countdown").innerHTML="💍 Today is the Day!";
+}
+},1000);
+
+var music=document.getElementById("bgMusic");
+var playing=false;
+
+function toggleMusic(){
+if(!playing){
+music.play();
+event.target.innerHTML="⏸ Pause Music";
+playing=true;
+}else{
+music.pause();
+event.target.innerHTML="🎵 Play Music";
+playing=false;
+}
+}
+</script>
+
+</body>
+</html>
