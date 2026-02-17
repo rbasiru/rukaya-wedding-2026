@@ -44,7 +44,6 @@ body{
   background:rgba(0,0,0,0.3);
   backdrop-filter:blur(6px);
   z-index:1000;
-  transition:all 0.3s ease;
 }
 
 .top-nav a{
@@ -59,42 +58,22 @@ body{
   font-weight:500;
 }
 
-.top-nav.shrink{
-  padding:8px;
-  background:rgba(0,0,0,0.6);
-}
-
-/* WATER CANVAS */
+/* WATER BACKGROUND */
 #waterCanvas{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  z-index:1;
+  z-index:0;
   pointer-events:none;
 }
 
-section, .music-btn {
+section{
   position:relative;
   z-index:2;
-}
-
-/* SECTIONS */
-section{
   padding:110px 20px;
   text-align:center;
-}
-
-.fade-section{
-  opacity:0;
-  transform:translateY(40px);
-  transition:1.5s ease;
-}
-
-.fade-section.show{
-  opacity:1;
-  transform:translateY(0);
 }
 
 /* TYPOGRAPHY */
@@ -112,7 +91,7 @@ section{
   margin-top:15px;
 }
 
-h2{
+.amp{
   font-family:'Great Vibes',cursive;
   font-size:42px;
   color:var(--gold);
@@ -123,7 +102,6 @@ h2{
   font-size:32px;
   letter-spacing:2px;
   margin-bottom:30px;
-  position:relative;
 }
 
 .sub-heading::after{
@@ -181,26 +159,6 @@ h2{
   cursor:pointer;
 }
 
-/* OPENING */
-.open-screen{
-  height:100vh;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  text-align:center;
-}
-
-.open-screen button{
-  padding:14px 35px;
-  border-radius:30px;
-  border:none;
-  background:white;
-  color:var(--dark);
-  cursor:pointer;
-  margin-top:20px;
-}
-
 /* MUSIC BUTTON */
 .music-btn{
   position:fixed;
@@ -232,19 +190,11 @@ h2{
 
 <canvas id="waterCanvas"></canvas>
 
-<div class="open-screen" id="opening">
-<h1>Wedding Invitation</h1>
-<p>29th March 2026</p>
-<button onclick="openInvitation()">Open Invitation</button>
-</div>
-
 <audio id="bg-music" loop>
 <source src="wedding-music.mp3" type="audio/mpeg">
 </audio>
 
-<div id="content" style="display:none;">
-
-<section id="home" class="fade-section">
+<section id="home">
 
 <p class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
 
@@ -253,7 +203,7 @@ The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to 
 </p>
 
 <h1 class="name">Abdul-Wadud Abdul Wahab</h1>
-<h2>&</h2>
+<div class="amp">&</div>
 <h1 class="name">Rukaya Basiru</h1>
 
 <p style="margin-top:25px;font-size:20px;">
@@ -279,7 +229,7 @@ Join us as we start this new journey hand in hand and heart in heart.
 
 </section>
 
-<section id="event" class="fade-section">
+<section id="event">
 <h2 class="sub-heading">Event Details</h2>
 
 <div class="card">
@@ -297,7 +247,7 @@ Join us as we start this new journey hand in hand and heart in heart.
 </div>
 </section>
 
-<section id="location" class="fade-section">
+<section id="location">
 <h2 class="sub-heading">Location</h2>
 <div class="card">
 <p>📍 Foster International School, Cotton Avenue – Kokomlemle</p>
@@ -308,7 +258,7 @@ width="100%" height="300" style="border:0;border-radius:15px;" loading="lazy">
 </div>
 </section>
 
-<section id="rsvp" class="fade-section rsvp">
+<section id="rsvp" class="rsvp">
 <h2 class="sub-heading">Confirm Your Attendance</h2>
 
 <input type="text" id="name" placeholder="Your Full Name"><br>
@@ -329,26 +279,29 @@ width="100%" height="300" style="border:0;border-radius:15px;" loading="lazy">
 <button onclick="sendRSVP()">Confirm Attendance</button>
 </section>
 
-</div>
-
 <div class="music-btn" onclick="toggleMusic()">
 <span id="musicIcon">▶</span>
 </div>
 
 <script>
-function openInvitation(){
-document.getElementById("opening").style.display="none";
-document.getElementById("content").style.display="block";
-document.getElementById("bg-music").play();
-startAutoScroll();
-}
-
+/* MUSIC */
 function toggleMusic(){
 const music=document.getElementById("bg-music");
 const icon=document.getElementById("musicIcon");
 if(music.paused){music.play();icon.innerHTML="❚❚";}
 else{music.pause();icon.innerHTML="▶";}
 }
+
+/* COUNTDOWN */
+const eventDate=new Date("March 29, 2026 10:00:00").getTime();
+setInterval(()=>{
+const now=new Date().getTime();
+const distance=eventDate-now;
+document.getElementById("days").innerText=Math.floor(distance/(1000*60*60*24));
+document.getElementById("hours").innerText=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/(1000*60));
+document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
+},1000);
 
 /* WATER RIPPLE */
 const waterCanvas=document.getElementById("waterCanvas");
@@ -386,10 +339,23 @@ requestAnimationFrame(animateWater);
 }
 animateWater();
 
-window.addEventListener("resize",()=>{
-waterCanvas.width=window.innerWidth;
-waterCanvas.height=window.innerHeight;
-});
+/* RSVP */
+function sendRSVP(){
+const name=document.getElementById("name").value;
+const attendance=document.getElementById("attendance").value;
+const guests=document.getElementById("guests").value;
+if(!name||!attendance||!guests){alert("Please fill all required fields.");return;}
+const text=`Assalamu Alaikum,
+
+My name is ${name}.
+Response: ${attendance}
+Number of Guests: ${guests}
+
+Wedding: Abdul-Wadud & Rukaya
+Date: 29th March 2026`;
+window.open(`https://wa.me/233243202904?text=${encodeURIComponent(text)}`,"_blank");
+setTimeout(()=>window.open(`https://wa.me/233243779731?text=${encodeURIComponent(text)}`,"_blank"),1500);
+}
 </script>
 
 </body>
