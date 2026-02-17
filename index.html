@@ -14,7 +14,6 @@
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
-
 html{scroll-behavior:smooth;}
 
 body{
@@ -39,8 +38,8 @@ body{
   width:100%;
   display:flex;
   justify-content:center;
-  gap:30px;
-  padding:15px;
+  gap:40px;
+  padding:18px;
   background:rgba(0,0,0,0.35);
   backdrop-filter:blur(6px);
   z-index:1000;
@@ -50,132 +49,140 @@ body{
   color:white;
   text-decoration:none;
   font-size:14px;
-  letter-spacing:1px;
+  letter-spacing:2px;
 }
 
-/* WATER CANVAS */
+/* WATER BACKGROUND */
 #waterCanvas{
   position:fixed;
   top:0;
   left:0;
   width:100%;
   height:100%;
-  z-index:0;
+  z-index:-1;
   pointer-events:none;
 }
 
-section, footer{
-  position:relative;
-  z-index:2;
-  padding:110px 20px;
+/* SECTIONS */
+section{
+  padding:170px 20px;
   text-align:center;
+  max-width:1000px;
+  margin:0 auto;
 }
 
 /* TYPOGRAPHY */
 .arabic{
   font-family:'Amiri',serif;
-  font-size:38px;
-  margin-bottom:40px;
-  letter-spacing:2px;
+  font-size:40px;
+  margin-bottom:60px;
+  letter-spacing:3px;
 }
 
 .name{
   font-family:'Cormorant Garamond',serif;
-  font-size:52px;
-  letter-spacing:3px;
-  margin-top:15px;
+  font-size:58px;
+  letter-spacing:4px;
+  margin:25px 0;
 }
 
 .amp{
   font-family:'Great Vibes',cursive;
-  font-size:42px;
+  font-size:46px;
   color:var(--gold);
 }
 
 .sub-heading{
   font-family:'Playfair Display',serif;
-  font-size:32px;
-  letter-spacing:2px;
-  margin-bottom:30px;
+  font-size:36px;
+  letter-spacing:3px;
+  margin-bottom:50px;
 }
 
 .sub-heading::after{
   content:"";
-  width:60px;
+  width:70px;
   height:2px;
   background:var(--gold);
   display:block;
-  margin:15px auto 0 auto;
+  margin:20px auto 0 auto;
+}
+
+p{
+  line-height:2;
+  margin-bottom:20px;
 }
 
 /* COUNTDOWN */
 .countdown{
   display:flex;
   justify-content:center;
-  gap:15px;
+  gap:35px;
   flex-wrap:wrap;
-  margin-top:40px;
+  margin-top:80px;
 }
 
 .count-box{
   background:white;
   color:var(--dark);
-  padding:20px;
-  border-radius:15px;
-  min-width:80px;
+  padding:30px;
+  border-radius:18px;
+  min-width:100px;
 }
 
 /* CARDS */
 .card{
   background:white;
   color:var(--dark);
-  padding:35px;
-  border-radius:20px;
-  max-width:600px;
-  margin:30px auto;
+  padding:55px;
+  border-radius:25px;
+  max-width:650px;
+  margin:70px auto;
 }
 
 /* RSVP */
 .rsvp input,.rsvp select,.rsvp textarea{
   width:90%;
-  max-width:400px;
-  padding:10px;
-  margin:10px 0;
-  border-radius:8px;
+  max-width:450px;
+  padding:12px;
+  margin:14px 0;
+  border-radius:10px;
   border:none;
 }
 
 .rsvp button{
   background:white;
   color:var(--dark);
-  padding:12px 30px;
-  border-radius:25px;
+  padding:14px 35px;
+  border-radius:30px;
   border:none;
   cursor:pointer;
+  margin-top:15px;
 }
 
 /* MUSIC BUTTON */
 .music-btn{
   position:fixed;
-  bottom:20px;
-  right:20px;
+  bottom:25px;
+  right:25px;
   background:white;
   color:var(--dark);
-  width:55px;
-  height:55px;
+  width:60px;
+  height:60px;
   border-radius:50%;
   display:flex;
   justify-content:center;
   align-items:center;
   cursor:pointer;
-  box-shadow:0 5px 15px rgba(0,0,0,0.2);
+  box-shadow:0 6px 18px rgba(0,0,0,0.3);
   z-index:1000;
 }
 
 footer{
-  padding:60px 20px;
-  font-family:'Playfair Display', serif;
-  letter-spacing:2px;
+  padding:80px 20px;
+  text-align:center;
+  font-family:'Playfair Display',serif;
+  letter-spacing:3px;
   opacity:0.9;
 }
 </style>
@@ -184,9 +191,9 @@ footer{
 <body>
 
 <nav class="top-nav">
-<a href="#home">Home</a>
-<a href="#event">Event</a>
-<a href="#location">Location</a>
+<a href="#home">HOME</a>
+<a href="#event">EVENT</a>
+<a href="#location">LOCATION</a>
 <a href="#rsvp">RSVP</a>
 </nav>
 
@@ -200,7 +207,7 @@ footer{
 
 <p class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
 
-<p style="max-width:800px;margin:0 auto 40px;">
+<p>
 The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to the Nikkah of their beloved children
 </p>
 
@@ -208,15 +215,15 @@ The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to 
 <div class="amp">&</div>
 <h1 class="name">Rukaya Basiru</h1>
 
-<p style="margin-top:25px;font-size:20px;">
+<p style="font-size:22px;">
 Sunday 29th March, 2026
 </p>
 
-<div style="height:60px;"></div>
+<div style="height:120px;"></div>
 
 <h2 class="sub-heading">The Beginning of Forever</h2>
 
-<p style="max-width:800px;margin:0 auto;">
+<p>
 Together we will dance under starry skies, laugh until our sides ache and cherish every moment we’re given.
 Two hearts, one love, infinite joy begins.
 Join us as we start this new journey hand in hand and heart in heart.
@@ -251,11 +258,12 @@ Join us as we start this new journey hand in hand and heart in heart.
 
 <section id="location">
 <h2 class="sub-heading">Location</h2>
+
 <div class="card">
 <p>📍 Foster International School, Cotton Avenue – Kokomlemle</p>
 <iframe 
 src="https://www.google.com/maps?q=Foster+International+School+Cotton+Avenue+Kokomlemle&output=embed"
-width="100%" height="300" style="border:0;border-radius:15px;" loading="lazy">
+width="100%" height="320" style="border:0;border-radius:20px;" loading="lazy">
 </iframe>
 </div>
 </section>
@@ -279,17 +287,24 @@ width="100%" height="300" style="border:0;border-radius:15px;" loading="lazy">
 <textarea id="message" placeholder="Message (Optional)"></textarea><br>
 
 <button onclick="sendRSVP()">Confirm Attendance</button>
+
+<div style="margin-top:50px;">
+<p>Alternatively contact:</p>
+<p>📞 Abdul-Wadud: 024 320 2904</p>
+<p>📞 Rukaya: 024 377 9731</p>
+</div>
+
 </section>
 
 <section>
-<p style="max-width:800px;margin:0 auto;font-style:italic;font-size:18px;">
+<p style="max-width:750px;margin:0 auto;font-style:italic;font-size:20px;">
 Your presence and sincere prayers will bring us immense joy and blessings on this special day.
 Jazaakumullahu Khairan.
 </p>
 </section>
 
 <footer>
-<div style="width:60px;height:2px;background:#ffd700;margin:0 auto 20px auto;"></div>
+<div style="width:70px;height:2px;background:#ffd700;margin:0 auto 25px auto;"></div>
 Abdul-Wadud & Rukaya • 2026
 </footer>
 
@@ -298,6 +313,7 @@ Abdul-Wadud & Rukaya • 2026
 </div>
 
 <script>
+/* MUSIC */
 function toggleMusic(){
 const music=document.getElementById("bg-music");
 const icon=document.getElementById("musicIcon");
@@ -351,6 +367,24 @@ r.y=Math.random()*waterCanvas.height;
 requestAnimationFrame(animateWater);
 }
 animateWater();
+
+/* AUTO SCROLL */
+let autoScrollPosition=0;
+let autoScrollActive=true;
+let autoScrollSpeed=0.7;
+
+function autoScroll(){
+if(!autoScrollActive)return;
+autoScrollPosition+=autoScrollSpeed;
+window.scrollTo(0,autoScrollPosition);
+if(autoScrollPosition<document.body.scrollHeight-window.innerHeight){
+requestAnimationFrame(autoScroll);
+}
+}
+
+window.addEventListener("load",()=>{setTimeout(autoScroll,2000);});
+window.addEventListener("wheel",()=>{autoScrollActive=false;});
+window.addEventListener("touchstart",()=>{autoScrollActive=false;});
 
 /* RSVP */
 function sendRSVP(){
