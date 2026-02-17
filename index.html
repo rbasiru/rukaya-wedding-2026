@@ -24,85 +24,53 @@ overflow-x:hidden;
 background:linear-gradient(120deg,#d2691e,#5c2e0d);
 }
 
-/* ===== GOLD SHIMMER ===== */
+/* GOLD SHIMMER */
 .shimmer{
 background:linear-gradient(90deg,#caa400,#ffd700,#fff6b0,#ffd700,#caa400);
 background-size:200% auto;
 color:transparent;
-background-clip:text;
 -webkit-background-clip:text;
+background-clip:text;
 animation:shine 4s linear infinite;
 }
-@keyframes shine{
-to{background-position:200% center;}
-}
+@keyframes shine{to{background-position:200% center;}}
 
-/* ===== SPLASH ===== */
+/* SPLASH */
 #splash{
-position:fixed;
-inset:0;
+position:fixed;inset:0;
 background:linear-gradient(135deg,#d2691e,#5c2e0d);
-display:flex;
-align-items:center;
-justify-content:center;
+display:flex;align-items:center;justify-content:center;
 flex-direction:column;
 z-index:5000;
-text-align:center;
 }
 #enterBtn{
-margin-top:30px;
+margin-top:25px;
 padding:12px 30px;
-border-radius:30px;
-border:none;
-background:white;
-color:#5c2e0d;
-cursor:pointer;
-font-weight:bold;
+border:none;border-radius:30px;
+background:white;color:#5c2e0d;
+cursor:pointer;font-weight:bold;
 }
 
-/* ===== BUBBLES ===== */
-.bubble{
-position:absolute;
-bottom:-100px;
-background:rgba(255,255,255,0.07);
-border-radius:50%;
-animation:rise linear infinite;
-}
-@keyframes rise{
-to{transform:translateY(-110vh);}
-}
-
-/* ===== NAV ===== */
+/* NAV */
 nav{
-position:fixed;
-top:0;
-width:100%;
-display:flex;
-justify-content:center;
-gap:35px;
+position:fixed;top:0;width:100%;
+display:flex;justify-content:center;gap:35px;
 padding:14px;
 background:rgba(0,0,0,0.4);
 backdrop-filter:blur(6px);
 z-index:1000;
 }
-nav a{
-color:white;
-text-decoration:none;
-font-size:13px;
-letter-spacing:2px;
-}
+nav a{color:white;text-decoration:none;font-size:13px;letter-spacing:2px;}
 nav a:hover{color:var(--gold);}
 
-/* ===== PROGRESS ===== */
+/* PROGRESS */
 #progress{
-position:fixed;
-top:0;left:0;
-height:3px;width:0%;
+position:fixed;top:0;left:0;height:3px;width:0%;
 background:linear-gradient(90deg,#caa400,#ffd700,#fff6b0,#ffd700);
 z-index:2000;
 }
 
-/* ===== SECTIONS ===== */
+/* SECTIONS */
 section{
 padding:100px 20px;
 text-align:center;
@@ -110,94 +78,50 @@ max-width:900px;
 margin:auto;
 }
 
-/* ===== TYPOGRAPHY ===== */
-.arabic{
-font-family:'Amiri';
-font-size:36px;
-margin-bottom:30px;
-}
-.name{
-font-family:'Cormorant Garamond';
-font-size:56px;
-margin:15px 0;
-}
-.amp{
-font-family:'Great Vibes';
-font-size:42px;
-color:var(--gold);
-}
-.sub{
-font-family:'Playfair Display';
-font-size:30px;
-margin:40px 0 20px;
-color:var(--gold);
-}
+.arabic{font-family:'Amiri';font-size:36px;margin-bottom:30px;}
+.name{font-family:'Cormorant Garamond';font-size:56px;margin:15px 0;}
+.amp{font-family:'Great Vibes';font-size:42px;color:var(--gold);}
+.sub{font-family:'Playfair Display';font-size:30px;margin:40px 0 20px;color:var(--gold);}
 
-/* ===== COUNTDOWN ===== */
 .countdown{
-display:flex;
-justify-content:center;
-gap:25px;
-flex-wrap:wrap;
-margin-top:40px;
+display:flex;justify-content:center;gap:25px;
+flex-wrap:wrap;margin-top:40px;
 }
 .box{
-background:white;
-color:var(--brown);
-padding:22px;
-border-radius:15px;
-min-width:85px;
+background:white;color:var(--brown);
+padding:22px;border-radius:15px;min-width:85px;
 }
 
-/* ===== CARD ===== */
 .card{
-background:white;
-color:var(--brown);
-padding:30px;
-border-radius:18px;
-margin:25px auto;
-max-width:600px;
+background:white;color:var(--brown);
+padding:30px;border-radius:18px;
+margin:25px auto;max-width:600px;
 box-shadow:0 8px 25px rgba(0,0,0,0.2);
 }
 
-/* ===== RSVP ===== */
 input,select,textarea{
-width:90%;
-max-width:400px;
-padding:12px;
-margin:10px 0;
-border-radius:8px;
-border:none;
+width:90%;max-width:400px;
+padding:12px;margin:10px 0;
+border-radius:8px;border:none;
 }
 textarea{height:90px;}
 
 button{
-background:white;
-color:var(--brown);
-padding:12px 25px;
-border:none;
-border-radius:25px;
-cursor:pointer;
-font-weight:bold;
-margin-top:10px;
+background:white;color:var(--brown);
+padding:12px 25px;border:none;
+border-radius:25px;cursor:pointer;
+font-weight:bold;margin-top:10px;
 }
 
-/* ===== CONTACT ===== */
 .contact{
-background:white;
-color:var(--brown);
-padding:25px;
-border-radius:18px;
-margin:20px auto;
-max-width:500px;
+background:white;color:var(--brown);
+padding:25px;border-radius:18px;
+margin:20px auto;max-width:500px;
 }
 .contact a{
-display:inline-block;
-margin:8px;
-padding:10px 20px;
-border-radius:25px;
-text-decoration:none;
-color:white;
+display:inline-block;margin:8px;
+padding:10px 20px;border-radius:25px;
+text-decoration:none;color:white;
 }
 .call{background:var(--gold);}
 .wa{background:#25D366;}
@@ -208,21 +132,12 @@ font-family:'Playfair Display';
 letter-spacing:2px;
 }
 
-/* ===== MUSIC ===== */
 .music{
-position:fixed;
-bottom:25px;
-right:25px;
-background:white;
-color:var(--brown);
-width:55px;height:55px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-font-size:18px;
-z-index:2000;
+position:fixed;bottom:25px;right:25px;
+background:white;color:var(--brown);
+width:55px;height:55px;border-radius:50%;
+display:flex;align-items:center;justify-content:center;
+cursor:pointer;font-size:18px;z-index:2000;
 }
 </style>
 </head>
@@ -246,8 +161,9 @@ z-index:2000;
 <source src="wedding-music.mp3" type="audio/mpeg">
 </audio>
 
+<!-- HOME -->
 <section id="home">
-<p class="arabic shimmer">بِسْمِ ٱللَّٰهِ ٱلرَّحْمِ ٱلرَّحِيمِ</p>
+<p class="arabic shimmer">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
 <p>The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to the Nikkah of their beloved children</p>
 <h1 class="name shimmer">Abdul-Wadud</h1>
 <div class="amp">&</div>
@@ -262,24 +178,135 @@ z-index:2000;
 </div>
 </section>
 
-<!-- EVENT SECTION WITH 1-5 STRUCTURE (as previously provided) -->
+<!-- EVENT DETAILS -->
+<section id="event">
+<h2 class="sub">Event Details</h2>
 
-<!-- RSVP + CONTACT + DUAA remain same as previously updated -->
+<div class="card">
+<h3>1. Nikkah Ceremony</h3>
+<p>📅 Sunday, 29th March 2026</p>
+<p>🕰 10:00 AM</p>
+<p>📍 Cougar Street, Madina SDA – Accra</p>
+</div>
+
+<div class="card">
+<iframe src="https://www.google.com/maps?q=Madina+SDA+Accra&output=embed"
+width="100%" height="280" style="border:0;border-radius:15px;"></iframe>
+</div>
+
+<div class="card">
+<h3>2. Reception – Bride’s Side</h3>
+<p>🕰 12:00 PM</p>
+<p>📍 Foster International School, Cotton Avenue – Kokomlemle</p>
+</div>
+
+<div class="card">
+<iframe src="https://www.google.com/maps?q=Foster+International+School+Kokomlemle&output=embed"
+width="100%" height="280" style="border:0;border-radius:15px;"></iframe>
+</div>
+
+<div class="card">
+<h3>3. Reception – Groom’s Side</h3>
+<p>🕰 12:00 PM</p>
+<p>📍 Cougar Street Area – Madina</p>
+</div>
+
+<div class="card">
+<iframe src="https://www.google.com/maps?q=Cougar+Street+Madina+Accra&output=embed"
+width="100%" height="280" style="border:0;border-radius:15px;"></iframe>
+</div>
+</section>
+
+<!-- RSVP -->
+<section id="rsvp">
+<h2 class="sub">Confirm Attendance</h2>
+<p>Please let us know if you will be joining us on our special day.</p>
+
+<div class="card">
+<input type="text" id="nameInput" placeholder="Your Full Name">
+<select id="attendance">
+<option value="">Will you attend?</option>
+<option>Yes, I will attend</option>
+<option>Sorry, I can't make it</option>
+</select>
+<select id="guests">
+<option value="">Number of Guests</option>
+<option>1</option><option>2</option><option>3</option><option>4</option>
+</select>
+<textarea id="message" placeholder="Message for the Couple (Optional)"></textarea>
+<button onclick="sendRSVP()">Submit</button>
+</div>
+</section>
+
+<section>
+<h2 class="sub">RSVP Contacts</h2>
+<div class="contact">
+<h3>Rashad</h3>
+<a href="tel:0247647739" class="call">Call</a>
+<a href="https://wa.me/233247647739" class="wa">WhatsApp</a>
+</div>
+<div class="contact">
+<h3>Shehu</h3>
+<a href="tel:0530713449" class="call">Call</a>
+<a href="https://wa.me/233530713449" class="wa">WhatsApp</a>
+</div>
+</section>
+
+<section>
+<p style="max-width:650px;margin:auto;font-style:italic;">
+Your presence and sincere prayers will bring us immense joy and blessings on this special day. Jazaakumullahu Khairan.
+</p>
+</section>
+
+<footer>
+Abdul-Wadud & Rukaya • 2026
+</footer>
+
+<div class="music" onclick="toggleMusic()">▶</div>
 
 <script>
 document.getElementById("enterBtn").onclick=function(){
 document.getElementById("splash").style.display="none";
 document.getElementById("music").play();
 }
-for(let i=0;i<20;i++){
-let bubble=document.createElement("div");
-bubble.className="bubble";
-bubble.style.width=Math.random()*35+15+"px";
-bubble.style.height=bubble.style.width;
-bubble.style.left=Math.random()*100+"%";
-bubble.style.animationDuration=Math.random()*10+10+"s";
-document.body.appendChild(bubble);
+
+const eventDate=new Date("March 29, 2026 10:00:00").getTime();
+setInterval(()=>{
+const now=new Date().getTime();
+const distance=eventDate-now;
+document.getElementById("days").innerText=Math.floor(distance/(1000*60*60*24));
+document.getElementById("hours").innerText=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/(1000*60));
+document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
+},1000);
+
+function sendRSVP(){
+const name=document.getElementById("nameInput").value;
+const attendance=document.getElementById("attendance").value;
+const guests=document.getElementById("guests").value;
+const message=document.getElementById("message").value;
+
+if(!name||!attendance||!guests){alert("Please fill required fields");return;}
+
+const text=`Assalamu Alaikum,
+Name: ${name}
+Response: ${attendance}
+Guests: ${guests}
+Message: ${message ? message : "No message"}
+Wedding: Abdul-Wadud & Rukaya`;
+
+window.open(`https://wa.me/233243202904?text=${encodeURIComponent(text)}`);
+setTimeout(()=>{
+window.open(`https://wa.me/233243779731?text=${encodeURIComponent(text)}`);
+},1200);
 }
+
+function toggleMusic(){
+const music=document.getElementById("music");
+if(music.paused){music.play();document.querySelector(".music").innerText="❚❚";}
+else{music.pause();document.querySelector(".music").innerText="▶";}
+}
+
 window.addEventListener("scroll",()=>{
 const winScroll=document.documentElement.scrollTop;
 const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
