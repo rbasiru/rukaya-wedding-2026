@@ -318,52 +318,314 @@ Jazaakumullahu Khairan.
 
 <div class="music-btn" onclick="toggleMusic()">🎵</div>
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Abdul-Wadud & Rukaya | Wedding Invitation</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Montserrat:wght@300;400;500&family=Amiri&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --primary:#ffd700;
+  --white:#ffffff;
+}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'Montserrat',sans-serif;
+  background: linear-gradient(-45deg, #d2691e, #8b4513, #c56a1b, #a0522d);
+  background-size:400% 400%;
+  animation: gradientMove 20s ease infinite, pageReveal 1.5s ease forwards;
+  color:white;
+  scroll-behavior:smooth;
+  overflow-x:hidden;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+@keyframes pageReveal{
+  0%{filter:blur(8px);opacity:0;}
+  100%{filter:blur(0);opacity:1;}
+}
+
+/* Sections */
+section{
+  padding:90px 20px;
+  text-align:center;
+}
+
+.fade-section{
+  opacity:0;
+  transform:translateY(40px);
+  transition:1.5s ease;
+}
+
+.fade-section.show{
+  opacity:1;
+  transform:translateY(0);
+}
+
+h1,h2,h3{
+  font-family:'Cormorant Garamond',serif;
+}
+
+h2{
+  font-size:30px;
+  margin-bottom:25px;
+}
+
+p{
+  line-height:1.8;
+}
+
+/* Arabic */
+.arabic{
+  font-family:'Amiri',serif;
+  font-size:36px;
+  margin-bottom:30px;
+}
+
+/* Names */
+.name{
+  font-size:48px;
+  letter-spacing:2px;
+  position:relative;
+  margin-top:10px;
+}
+
+.name::before{
+  content:"";
+  position:absolute;
+  width:120%;
+  height:120%;
+  top:-10%;
+  left:-10%;
+  background:radial-gradient(circle, rgba(255,215,0,0.15) 0%, transparent 70%);
+  border-radius:50%;
+  filter:blur(20px);
+  z-index:-1;
+}
+
+/* Countdown */
+.countdown{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  margin-top:40px;
+}
+
+.count-box{
+  background:white;
+  color:#8b4513;
+  padding:20px;
+  border-radius:15px;
+  min-width:80px;
+}
+
+/* Cards */
+.card{
+  background:white;
+  color:#8b4513;
+  padding:35px;
+  border-radius:20px;
+  max-width:600px;
+  margin:30px auto;
+}
+
+/* RSVP */
+.rsvp input,.rsvp select,.rsvp textarea{
+  width:90%;
+  max-width:400px;
+  padding:10px;
+  margin:10px 0;
+  border-radius:8px;
+  border:none;
+}
+
+.rsvp button{
+  background:#ffffff;
+  color:#8b4513;
+  padding:12px 30px;
+  border-radius:25px;
+  border:none;
+  cursor:pointer;
+}
+
+/* Opening */
+.open-screen{
+  height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  text-align:center;
+}
+
+.open-screen button{
+  padding:14px 35px;
+  border-radius:30px;
+  border:none;
+  background:white;
+  color:#8b4513;
+  cursor:pointer;
+  margin-top:20px;
+}
+
+/* Sparkles */
+#sparkleCanvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:0;
+}
+
+/* Music */
+.music-btn{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:white;
+  color:#8b4513;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="sparkleCanvas"></canvas>
+
+<div class="open-screen" id="opening">
+<h1>Wedding Invitation</h1>
+<p>29th March 2026</p>
+<button onclick="openInvitation()">Open Invitation</button>
+</div>
+
+<audio id="bg-music" loop>
+<source src="wedding-music.mp3" type="audio/mpeg">
+</audio>
+
+<div id="content" style="display:none;">
+
+<section class="fade-section">
+
+<p class="arabic">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</p>
+
+<p style="max-width:800px;margin:0 auto 40px auto;">
+The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to the Nikkah of their beloved children
+</p>
+
+<h1 class="name">Abdul-Wadud Abdul Wahab</h1>
+<h2 style="margin:15px 0;">&</h2>
+<h1 class="name">Rukaya Basiru</h1>
+
+<p style="margin-top:25px;font-size:20px;">
+Sunday 29th March, 2026
+</p>
+
+<h2>The Beginning of Forever</h2>
+
+<p style="max-width:800px;margin:0 auto;">
+Together we will dance under starry skies, laugh until our sides ache and cherish every moment we’re given.
+Two hearts, one love, infinite joy begins.
+Join us as we start this new journey hand in hand and heart in heart.
+</p>
+
+<div class="countdown">
+<div class="count-box"><h3 id="days">00</h3><p>Days</p></div>
+<div class="count-box"><h3 id="hours">00</h3><p>Hours</p></div>
+<div class="count-box"><h3 id="minutes">00</h3><p>Minutes</p></div>
+<div class="count-box"><h3 id="seconds">00</h3><p>Seconds</p></div>
+</div>
+
+</section>
+
+<section class="fade-section">
+<h2>Event Details</h2>
+
+<div class="card">
+<h3>Nikkah Ceremony</h3>
+<p>📅 Sunday, 29th March 2026</p>
+<p>🕰 10:00 AM</p>
+</div>
+
+<div class="card">
+<h3>Reception</h3>
+<p>📅 Sunday, 29th March 2026</p>
+<p>🕰 12:00 PM</p>
+</div>
+</section>
+
+<section class="fade-section">
+<h2>Location</h2>
+<div class="card">
+<p>📍 Foster International School, Cotton Avenue – Kokomlemle</p>
+<iframe 
+src="https://www.google.com/maps?q=Foster+International+School+Cotton+Avenue+Kokomlemle&output=embed"
+width="100%" height="300" style="border:0;border-radius:15px;" loading="lazy">
+</iframe>
+</div>
+</section>
+
+<section class="fade-section rsvp">
+<h2>Confirm Your Attendance</h2>
+
+<input type="text" id="name" placeholder="Your Full Name"><br>
+
+<select id="attendance">
+<option value="">Will you attend?</option>
+<option>Yes, I will attend</option>
+<option>Sorry, I can't make it</option>
+</select><br>
+
+<select id="guests">
+<option value="">Number of Guests</option>
+<option>1</option><option>2</option><option>3</option><option>4</option>
+</select><br>
+
+<textarea id="message" placeholder="Message (Optional)"></textarea><br>
+
+<button onclick="sendRSVP()">Confirm Attendance</button>
+</section>
+
+<section class="fade-section">
+<p style="font-style:italic;max-width:800px;margin:0 auto;">
+Your presence and sincere prayers will bring us immense joy and blessings on this special day.
+Jazaakumullahu Khairan.
+</p>
+</section>
+
+</div>
+
+<div class="music-btn" onclick="toggleMusic()">🎵</div>
+
 <script>
 function openInvitation(){
-const opening=document.getElementById("opening");
-opening.style.transition="opacity 1s ease";
-opening.style.opacity="0";
-setTimeout(()=>{
-opening.style.display="none";
+document.getElementById("opening").style.display="none";
 document.getElementById("content").style.display="block";
 document.getElementById("bg-music").play();
-},1000);
+startAutoScroll();
 }
 
-function toggleMusic(){
-const music=document.getElementById("bg-music");
-music.paused?music.play():music.pause();
-}
-
-function sendRSVP(){
-const name=document.getElementById("name").value;
-const attendance=document.getElementById("attendance").value;
-const guests=document.getElementById("guests").value;
-const message=document.getElementById("message").value;
-
-if(!name||!attendance||!guests){
-alert("Please fill all required fields.");
-return;
-}
-
-const groom="233243202904";
-const second="233243779731";
-
-const text=`Assalamu Alaikum,
-
-My name is ${name}.
-Response: ${attendance}
-Number of Guests: ${guests}
-
-Message: ${message}
-
-Wedding: Abdul-Wadud & Rukaya
-Date: 29th March 2026`;
-
-window.open(`https://wa.me/${groom}?text=${encodeURIComponent(text)}`,"_blank");
-setTimeout(()=>window.open(`https://wa.me/${second}?text=${encodeURIComponent(text)}`,"_blank"),1500);
-}
-
+/* Countdown */
 const eventDate=new Date("March 29, 2026 10:00:00").getTime();
 setInterval(()=>{
 const now=new Date().getTime();
@@ -374,28 +636,75 @@ document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/
 document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
 },1000);
 
-/* Glow */
-const canvas=document.getElementById("softGlow");
-const ctx=canvas.getContext("2d");
-canvas.width=window.innerWidth;
-canvas.height=window.innerHeight;
-let particles=[];
-for(let i=0;i<40;i++){
-particles.push({x:Math.random()*canvas.width,y:Math.random()*canvas.height,radius:Math.random()*2,speed:Math.random()*0.3});
-}
-function animateGlow(){
-ctx.clearRect(0,0,canvas.width,canvas.height);
-ctx.fillStyle="rgba(210,105,30,0.08)";
-particles.forEach(p=>{
-ctx.beginPath();
-ctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
-ctx.fill();
-p.y-=p.speed;
-if(p.y<0)p.y=canvas.height;
+/* Fade */
+const sections=document.querySelectorAll('.fade-section');
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){entry.target.classList.add('show');}
 });
-requestAnimationFrame(animateGlow);
+},{threshold:0.2});
+sections.forEach(section=>observer.observe(section));
+
+/* RSVP */
+function sendRSVP(){
+const name=document.getElementById("name").value;
+const attendance=document.getElementById("attendance").value;
+const guests=document.getElementById("guests").value;
+if(!name||!attendance||!guests){alert("Please fill all required fields.");return;}
+
+const text=`Assalamu Alaikum,
+
+My name is ${name}.
+Response: ${attendance}
+Number of Guests: ${guests}
+
+Wedding: Abdul-Wadud & Rukaya
+Date: 29th March 2026`;
+
+window.open(`https://wa.me/233243202904?text=${encodeURIComponent(text)}`,"_blank");
+setTimeout(()=>window.open(`https://wa.me/233243779731?text=${encodeURIComponent(text)}`,"_blank"),1500);
 }
-animateGlow();
+
+/* Auto Scroll */
+let autoScrollActive=true;
+let autoScrollPosition=0;
+
+function autoScroll(){
+if(!autoScrollActive)return;
+autoScrollPosition+=0.4;
+window.scrollTo(0,autoScrollPosition);
+if(autoScrollPosition<document.body.scrollHeight-window.innerHeight){
+requestAnimationFrame(autoScroll);
+}
+}
+
+function startAutoScroll(){
+setTimeout(()=>{autoScroll();},2000);
+}
+
+window.addEventListener("touchstart",()=>{autoScrollActive=false;});
+window.addEventListener("wheel",()=>{autoScrollActive=false;});
+
+/* Sparkles */
+const sparkleCanvas=document.getElementById("sparkleCanvas");
+const sparkleCtx=sparkleCanvas.getContext("2d");
+sparkleCanvas.width=window.innerWidth;
+sparkleCanvas.height=window.innerHeight;
+let sparkles=[];
+for(let i=0;i<25;i++){
+sparkles.push({x:Math.random()*sparkleCanvas.width,y:Math.random()*sparkleCanvas.height,size:Math.random()*2});
+}
+function animateSparkles(){
+sparkleCtx.clearRect(0,0,sparkleCanvas.width,sparkleCanvas.height);
+sparkles.forEach(s=>{
+sparkleCtx.beginPath();
+sparkleCtx.arc(s.x,s.y,s.size,0,Math.PI*2);
+sparkleCtx.fillStyle="rgba(255,215,0,0.3)";
+sparkleCtx.fill();
+});
+requestAnimationFrame(animateSparkles);
+}
+animateSparkles();
 </script>
 
 </body>
