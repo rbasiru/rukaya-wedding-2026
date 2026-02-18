@@ -10,27 +10,35 @@
 <style>
 :root{
 --gold:#d4af37;
---deep:#4b240d;
---brown:#7a3b16;
+--deep:#5a2e12;
+--amber:#e0a15b;
 }
 
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
+
 body{
 font-family:'Montserrat',sans-serif;
 color:white;
 overflow-x:hidden;
-background:linear-gradient(135deg,#7a3b16,#4b240d);
+background:linear-gradient(135deg,#f2c48d,#e0a15b,#f2c48d);
+background-size:200% 200%;
+animation:bgMove 18s ease infinite;
 }
 
-/* WATER RIPPLE */
+@keyframes bgMove{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+/* Ripple overlay */
 body::before{
 content:"";
 position:fixed;
 inset:0;
 background:
-radial-gradient(circle at 25% 40%, rgba(255,255,255,0.08), transparent 60%),
+radial-gradient(circle at 30% 40%, rgba(255,255,255,0.08), transparent 60%),
 radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05), transparent 60%);
 animation:ripple 18s ease-in-out infinite alternate;
 pointer-events:none;
@@ -38,10 +46,10 @@ z-index:0;
 }
 @keyframes ripple{
 0%{transform:translateY(0);}
-100%{transform:translateY(-60px);}
+100%{transform:translateY(-50px);}
 }
 
-/* WATERMARK */
+/* Watermark */
 body::after{
 content:"A ✧ R";
 position:fixed;
@@ -50,24 +58,45 @@ left:50%;
 transform:translate(-50%,-50%);
 font-family:'Cormorant Garamond';
 font-size:200px;
-color:rgba(255,255,255,0.04);
+color:rgba(255,255,255,0.05);
 letter-spacing:20px;
 pointer-events:none;
 z-index:0;
 }
 
-section, nav, footer{
-position:relative;
-z-index:2;
+section, nav, footer{position:relative;z-index:2;}
+
+/* Opening Screen */
+#opening{
+position:fixed;
+inset:0;
+background:linear-gradient(135deg,#f2c48d,#e0a15b);
+display:flex;
+align-items:center;
+justify-content:center;
+z-index:6000;
+transition:1s ease;
+text-align:center;
+padding:20px;
 }
 
-/* CURTAIN */
+#opening button{
+margin-top:25px;
+padding:12px 30px;
+border:none;
+border-radius:30px;
+background:white;
+color:#5a2e12;
+cursor:pointer;
+font-weight:bold;
+}
+
+/* Curtain */
 .curtain{
 position:fixed;
-top:0;
-bottom:0;
+top:0;bottom:0;
 width:50%;
-background:#4b240d;
+background:#5a2e12;
 z-index:5000;
 transition:1.5s ease;
 }
@@ -76,7 +105,7 @@ transition:1.5s ease;
 body.loaded .curtain.left{transform:translateX(-100%);}
 body.loaded .curtain.right{transform:translateX(100%);}
 
-/* SHIMMER */
+/* Shimmer */
 .shimmer{
 background:linear-gradient(90deg,#b8860b,#ffd700,#fff5cc,#ffd700,#b8860b);
 background-size:300% auto;
@@ -84,22 +113,19 @@ color:transparent;
 -webkit-background-clip:text;
 background-clip:text;
 animation:shine 3s linear infinite;
-text-shadow:0 0 15px rgba(255,215,0,0.7);
+text-shadow:0 0 12px rgba(255,215,0,0.7);
 }
-@keyframes shine{
-to{background-position:300% center;}
-}
+@keyframes shine{to{background-position:300% center;}}
 
-/* NAV */
+/* Navigation */
 nav{
 position:fixed;
-top:0;
-width:100%;
+top:0;width:100%;
 display:flex;
 justify-content:center;
 gap:35px;
 padding:18px;
-background:rgba(0,0,0,0.35);
+background:rgba(0,0,0,0.25);
 backdrop-filter:blur(6px);
 }
 nav a{
@@ -109,19 +135,17 @@ font-size:13px;
 letter-spacing:2px;
 }
 
-/* PROGRESS */
+/* Progress */
 #progress{
 position:fixed;
-top:0;
-left:0;
-height:3px;
-width:0%;
+top:0;left:0;
+height:3px;width:0%;
 background:linear-gradient(90deg,#b8860b,#ffd700,#fff5cc);
-box-shadow:0 0 12px rgba(255,215,0,0.8);
+box-shadow:0 0 10px rgba(255,215,0,0.8);
 z-index:3000;
 }
 
-/* SECTION */
+/* Sections */
 section{
 padding:120px 20px;
 max-width:900px;
@@ -134,13 +158,11 @@ font-family:'Cormorant Garamond';
 font-size:64px;
 margin:15px 0;
 }
-
 .amp{
 font-family:'Great Vibes';
 font-size:45px;
 color:var(--gold);
 }
-
 .sub{
 font-family:'Playfair Display';
 font-size:32px;
@@ -148,13 +170,13 @@ margin:50px 0 20px;
 color:var(--gold);
 }
 
-/* COUNTDOWN */
+/* Countdown */
 .countdown{
 display:flex;
 justify-content:center;
 gap:25px;
-margin-top:40px;
 flex-wrap:wrap;
+margin-top:40px;
 }
 .box{
 background:white;
@@ -164,7 +186,7 @@ border-radius:15px;
 min-width:90px;
 }
 
-/* CARD */
+/* Card */
 .card{
 background:white;
 color:var(--deep);
@@ -172,7 +194,7 @@ padding:35px;
 border-radius:18px;
 margin:30px auto;
 max-width:650px;
-box-shadow:0 10px 35px rgba(0,0,0,0.3);
+box-shadow:0 10px 35px rgba(0,0,0,0.2);
 }
 
 /* RSVP */
@@ -195,7 +217,7 @@ cursor:pointer;
 font-weight:bold;
 }
 
-/* CONTACT */
+/* Contacts */
 .contact{
 background:white;
 color:var(--deep);
@@ -215,25 +237,7 @@ color:white;
 .call{background:var(--gold);}
 .wa{background:#25D366;}
 
-/* MUSIC */
-.music{
-position:fixed;
-bottom:25px;
-right:25px;
-background:white;
-color:var(--deep);
-width:60px;
-height:60px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-font-size:18px;
-z-index:2000;
-}
-
-/* BUBBLES */
+/* Bubbles */
 .bubble{
 position:fixed;
 bottom:-120px;
@@ -243,15 +247,53 @@ animation:rise linear infinite;
 z-index:1;
 }
 @keyframes rise{
-to{
-transform:translateY(-120vh);
-opacity:0;
+to{transform:translateY(-120vh);opacity:0;}
 }
+
+/* Music */
+.music{
+position:fixed;
+bottom:25px;
+right:25px;
+background:white;
+color:var(--deep);
+width:60px;height:60px;
+border-radius:50%;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+font-size:18px;
+z-index:2000;
 }
 </style>
 </head>
 
 <body>
+
+<!-- Opening -->
+<div id="opening">
+  <div>
+    <h1 class="shimmer" style="font-family:'Great Vibes';font-size:55px;">
+      Abdul-Wadud & Rukaya
+    </h1>
+    <p style="margin-top:10px;letter-spacing:3px;">Nikkah Ceremony 2026</p>
+
+    <div style="margin:40px auto; max-width:700px;">
+      <p style="font-family:'Amiri';font-size:26px;line-height:1.8;">
+        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا
+        لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
+      </p>
+      <p style="margin-top:15px;font-size:15px;opacity:0.9;">
+        “And among His signs is that He created for you mates from among yourselves
+        that you may find tranquility in them; and He placed between you affection and mercy.”
+        — Surah Ar-Rum (30:21)
+      </p>
+    </div>
+
+    <button onclick="enterSite()">Enter</button>
+  </div>
+</div>
 
 <div class="curtain left"></div>
 <div class="curtain right"></div>
@@ -269,7 +311,7 @@ opacity:0;
 </audio>
 
 <section id="home">
-<p style="font-family:'Amiri';font-size:36px;" class="shimmer">
+<p class="shimmer" style="font-family:'Amiri';font-size:36px;">
 بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ
 </p>
 
@@ -290,7 +332,8 @@ opacity:0;
 
 <h2 class="sub">The Beginning of Forever</h2>
 <p>
-Together we will dance under starry skies, laugh until our sides ache and cherish every moment we’re given. Two hearts, one love, infinite joy begins.
+Together we will dance under starry skies, laugh until our sides ache and cherish every moment we’re given.
+Two hearts, one love, infinite joy begins.
 </p>
 </section>
 
@@ -360,7 +403,8 @@ width="100%" height="280" style="border:0;border-radius:15px;"></iframe>
 
 <section>
 <p style="max-width:650px;margin:auto;font-style:italic;">
-Your presence and sincere prayers will bring us immense joy and blessings on this special day. Jazaakumullahu Khairan.
+Your presence and sincere prayers will bring us immense joy and blessings on this special day.
+Jazaakumullahu Khairan.
 </p>
 </section>
 
@@ -372,10 +416,11 @@ Abdul-Wadud & Rukaya • 2026
 
 <script>
 
-/* Curtain */
-window.addEventListener("load",()=>{
+/* Opening */
+function enterSite(){
+document.getElementById("opening").style.display="none";
 document.body.classList.add("loaded");
-});
+}
 
 /* Bubbles */
 for(let i=0;i<20;i++){
@@ -425,7 +470,7 @@ if(music.paused){music.play();document.querySelector(".music").innerText="❚❚
 else{music.pause();document.querySelector(".music").innerText="▶";}
 }
 
-/* Progress */
+/* Scroll Progress */
 window.addEventListener("scroll",()=>{
 const winScroll=document.documentElement.scrollTop;
 const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
