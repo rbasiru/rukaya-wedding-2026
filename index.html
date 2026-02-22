@@ -1,491 +1,328 @@
-<!-- 
-RUKAYA & ABDUL-WADUD WEDDING WEBSITE
-MASTER LUXURY BUILD
-Version: V5 FINAL STABLE
-Saved: February 2026
-This is the official starting point for future edits.
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Abdul-Wadud & Rukaya | Nikkah 2026</title>
+<link rel="icon" href="favicon.svg">
 
-<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@400;600&family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400&family=Amiri&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@500;600&family=Montserrat:wght@300;400;500&family=Amiri&display=swap" rel="stylesheet">
 
 <style>
 :root{
 --gold:#d4af37;
---deep:#5a2e12;
---amber:#e0a15b;
+--brown:#3b1f10;
+--light:#fff6d5;
 }
 
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
-
 body{
 font-family:'Montserrat',sans-serif;
 color:white;
 overflow-x:hidden;
-background:linear-gradient(135deg,#f2c48d,#e0a15b,#f2c48d);
-background-size:200% 200%;
-animation:bgMove 18s ease infinite;
-}
-
-@keyframes bgMove{
-0%{background-position:0% 50%;}
-50%{background-position:100% 50%;}
-100%{background-position:0% 50%;}
-}
-
-/* Ripple overlay */
-body::before{
-content:"";
-position:fixed;
-inset:0;
 background:
-radial-gradient(circle at 30% 40%, rgba(255,255,255,0.08), transparent 60%),
-radial-gradient(circle at 70% 70%, rgba(255,255,255,0.05), transparent 60%);
-animation:ripple 18s ease-in-out infinite alternate;
-pointer-events:none;
-z-index:0;
-}
-@keyframes ripple{
-0%{transform:translateY(0);}
-100%{transform:translateY(-50px);}
+linear-gradient(rgba(50,25,12,0.85), rgba(50,25,12,0.85)),
+url("couple-bg.png");
+background-size:120%;
+background-position:center;
+background-attachment:fixed;
+animation:goldPulse 10s ease-in-out infinite alternate;
 }
 
-/* Watermark */
-body::after{
-content:"A ✧ R";
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-font-family:'Cormorant Garamond';
-font-size:200px;
-color:rgba(255,255,255,0.05);
-letter-spacing:20px;
-pointer-events:none;
-z-index:0;
+@keyframes goldPulse{
+from{filter:brightness(1);}
+to{filter:brightness(1.05);}
 }
 
-section, nav, footer{position:relative;z-index:2;}
-
-/* Opening Screen */
-#opening{
+/* Loader */
+#loader{
 position:fixed;
 inset:0;
-background:linear-gradient(135deg,#f2c48d,#e0a15b);
+background:#3b1f10;
 display:flex;
 align-items:center;
 justify-content:center;
-z-index:6000;
-transition:1s ease;
-text-align:center;
-padding:20px;
+z-index:9999;
+transition:1s;
+}
+#loader span{
+font-family:'Great Vibes';
+font-size:60px;
+color:var(--gold);
+animation:pulse 2s infinite;
+}
+@keyframes pulse{
+0%{opacity:0.6;}
+50%{opacity:1;}
+100%{opacity:0.6;}
 }
 
-#opening button{
-margin-top:25px;
-padding:12px 30px;
-border:none;
-border-radius:30px;
-background:white;
-color:#5a2e12;
-cursor:pointer;
-font-weight:bold;
-}
-
-/* Curtain */
-.curtain{
+/* Lantern glow */
+.lantern{
 position:fixed;
-top:0;bottom:0;
-width:50%;
-background:#5a2e12;
-z-index:5000;
-transition:1.5s ease;
+width:200px;
+height:200px;
+border-radius:50%;
+background:radial-gradient(circle, rgba(212,175,55,0.25), transparent 70%);
+pointer-events:none;
+z-index:1;
 }
-.curtain.left{left:0;}
-.curtain.right{right:0;}
-body.loaded .curtain.left{transform:translateX(-100%);}
-body.loaded .curtain.right{transform:translateX(100%);}
+.lantern.tl{top:-60px;left:-60px;}
+.lantern.br{bottom:-60px;right:-60px;}
 
-/* Shimmer */
-.shimmer{
-background:linear-gradient(90deg,#b8860b,#ffd700,#fff5cc,#ffd700,#b8860b);
-background-size:300% auto;
-color:transparent;
--webkit-background-clip:text;
-background-clip:text;
-animation:shine 3s linear infinite;
-text-shadow:0 0 12px rgba(255,215,0,0.7);
-}
-@keyframes shine{to{background-position:300% center;}}
-
-/* Navigation */
-nav{
-position:fixed;
-top:0;width:100%;
-display:flex;
-justify-content:center;
-gap:35px;
-padding:18px;
-background:rgba(0,0,0,0.25);
-backdrop-filter:blur(6px);
-}
-nav a{
-color:white;
-text-decoration:none;
-font-size:13px;
-letter-spacing:2px;
-}
-
-/* Progress */
+/* Scroll progress */
 #progress{
 position:fixed;
-top:0;left:0;
-height:3px;width:0%;
-background:linear-gradient(90deg,#b8860b,#ffd700,#fff5cc);
-box-shadow:0 0 10px rgba(255,215,0,0.8);
-z-index:3000;
+top:0;
+left:0;
+height:4px;
+width:0%;
+background:linear-gradient(90deg,#d4af37,#fff2a8,#d4af37);
+z-index:9999;
 }
 
 /* Sections */
 section{
-padding:120px 20px;
+padding:100px 20px;
 max-width:900px;
 margin:auto;
 text-align:center;
 }
 
-.name{
-font-family:'Cormorant Garamond';
-font-size:64px;
-margin:15px 0;
-}
-.amp{
-font-family:'Great Vibes';
-font-size:45px;
-color:var(--gold);
-}
 .sub{
 font-family:'Playfair Display';
-font-size:32px;
-margin:50px 0 20px;
-color:var(--gold);
+font-size:34px;
+color:var(--light);
+margin-bottom:30px;
+position:relative;
+}
+.sub::after{
+content:"";
+display:block;
+width:80px;
+height:2px;
+margin:10px auto;
+background:linear-gradient(90deg,#d4af37,#fff2a8,#d4af37);
 }
 
-/* Countdown */
-.countdown{
-display:flex;
-justify-content:center;
-gap:25px;
-flex-wrap:wrap;
-margin-top:40px;
-}
-.box{
-background:white;
-color:var(--deep);
-padding:25px;
-border-radius:15px;
-min-width:90px;
-}
-
-/* Card */
+/* Cards */
 .card{
-background:white;
-color:var(--deep);
-padding:35px;
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(12px);
+padding:30px;
 border-radius:18px;
-margin:30px auto;
-max-width:650px;
-box-shadow:0 10px 35px rgba(0,0,0,0.2);
+margin:25px auto;
+max-width:600px;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* Maps */
+iframe{
+width:100%;
+height:250px;
+border:none;
+border-radius:15px;
+margin-top:20px;
+}
+
+/* Buttons */
+.map-btn, .calendar-btn, button{
+display:inline-block;
+margin-top:15px;
+padding:10px 22px;
+border-radius:25px;
+border:none;
+cursor:pointer;
+background:linear-gradient(90deg,#d4af37,#fff2a8,#d4af37);
+color:#3b1f10;
+font-weight:600;
+text-decoration:none;
+}
+
+/* Divider */
+.divider{
+margin:60px auto;
+width:120px;
+height:3px;
+background:linear-gradient(90deg,#d4af37,#fff2a8,#d4af37);
 }
 
 /* RSVP */
 input,select,textarea{
-width:90%;
-max-width:420px;
+width:100%;
 padding:12px;
 margin:10px 0;
 border-radius:8px;
 border:none;
 }
-textarea{height:100px;}
-button{
-background:white;
-color:var(--deep);
-padding:12px 30px;
-border:none;
-border-radius:25px;
-cursor:pointer;
-font-weight:bold;
-}
 
-/* Contacts */
-.contact{
-background:white;
-color:var(--deep);
-padding:25px;
-border-radius:18px;
-margin:20px auto;
+/* Timeline */
+.timeline{
+text-align:left;
 max-width:500px;
+margin:auto;
 }
-.contact a{
-display:inline-block;
-margin:8px;
-padding:10px 20px;
-border-radius:25px;
-text-decoration:none;
-color:white;
-}
-.call{background:var(--gold);}
-.wa{background:#25D366;}
-
-/* Bubbles */
-.bubble{
-position:fixed;
-bottom:-120px;
-background:rgba(255,255,255,0.1);
-border-radius:50%;
-animation:rise linear infinite;
-z-index:1;
-}
-@keyframes rise{
-to{transform:translateY(-120vh);opacity:0;}
+.timeline div{
+margin-bottom:15px;
 }
 
-/* Music */
-.music{
+/* Bismillah */
+.bismillah{
+font-family:'Amiri';
+font-size:26px;
+margin-bottom:20px;
+}
+
+/* Dust */
+.dust{
 position:fixed;
-bottom:25px;
-right:25px;
-background:white;
-color:var(--deep);
-width:60px;height:60px;
+width:6px;
+height:6px;
+background:rgba(212,175,55,0.8);
 border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-cursor:pointer;
-font-size:18px;
-z-index:2000;
+pointer-events:none;
+animation:dustFade 1s forwards;
+}
+@keyframes dustFade{
+to{opacity:0;transform:scale(2);}
+}
+
+@media(max-width:768px){
+section{padding:60px 15px;}
+.sub{font-size:26px;}
 }
 </style>
 </head>
 
 <body>
 
-<!-- Opening -->
-<div id="opening">
-  <div>
-    <h1 class="shimmer" style="font-family:'Great Vibes';font-size:55px;">
-      Abdul-Wadud & Rukaya
-    </h1>
-    <p style="margin-top:10px;letter-spacing:3px;">Nikkah Ceremony 2026</p>
-
-    <div style="margin:40px auto; max-width:700px;">
-      <p style="font-family:'Amiri';font-size:26px;line-height:1.8;">
-        وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا
-        لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
-      </p>
-      <p style="margin-top:15px;font-size:15px;opacity:0.9;">
-        “And among His signs is that He created for you mates from among yourselves
-        that you may find tranquility in them; and He placed between you affection and mercy.”
-        — Surah Ar-Rum (30:21)
-      </p>
-    </div>
-
-    <button onclick="enterSite()">Enter</button>
-  </div>
-</div>
-
-<div class="curtain left"></div>
-<div class="curtain right"></div>
-
+<div id="loader"><span>A ✧ R</span></div>
 <div id="progress"></div>
+<div class="lantern tl"></div>
+<div class="lantern br"></div>
 
-<nav>
-<a href="#home">HOME</a>
-<a href="#event">EVENT</a>
-<a href="#rsvp">RSVP</a>
-</nav>
-
-<audio id="music" loop>
+<audio id="bgMusic" loop>
 <source src="wedding-music.mp3" type="audio/mpeg">
 </audio>
 
-<section id="home">
-<p class="shimmer" style="font-family:'Amiri';font-size:36px;">
+<section>
+<div class="bismillah">
 بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ
-</p>
+</div>
 
-<p>The family of Alhaji Abdul-Wahab and the Late Alhaji Abass warmly invite you to the Nikkah of their beloved children</p>
-
-<h1 class="name shimmer">Abdul-Wadud</h1>
-<div class="amp">&</div>
-<h1 class="name shimmer">Rukaya</h1>
-
+<h1 style="font-family:'Great Vibes';font-size:52px;color:#d4af37;">
+Abdul-Wadud & Rukaya
+</h1>
 <p>Sunday 29th March, 2026</p>
-
-<div class="countdown">
-<div class="box"><h3 id="days"></h3><p>Days</p></div>
-<div class="box"><h3 id="hours"></h3><p>Hours</p></div>
-<div class="box"><h3 id="minutes"></h3><p>Minutes</p></div>
-<div class="box"><h3 id="seconds"></h3><p>Seconds</p></div>
-</div>
-
-<h2 class="sub">The Beginning of Forever</h2>
-<p>
-Together we will dance under starry skies, laugh until our sides ache and cherish every moment we’re given.
-Two hearts, one love, infinite joy begins.
-</p>
 </section>
 
-<section id="event">
-<h2 class="sub">Event Details</h2>
+<div class="divider"></div>
 
+<section>
+<h2 class="sub">🕌 Nikkah Ceremony</h2>
 <div class="card">
-<h3>1. Nikkah Ceremony</h3>
-<p>📍 Foster International School, Cotton Avenue – Kokomlemle</p>
-<p>🕰 10:00 AM</p>
-</div>
-
-<div class="card">
-<iframe src="https://www.google.com/maps?q=Foster+International+School+Kokomlemle&output=embed"
-width="100%" height="280" style="border:0;border-radius:15px;"></iframe>
-</div>
-
-<div class="card">
-<h3>2. Reception – Bride’s Side</h3>
-<p>📍 Foster International School</p>
-<p>🕰 12:00 PM</p>
-</div>
-
-<div class="card">
-<h3>3. Reception – Groom’s Side</h3>
-<p>📍 Cougar Street, Madina SDA – Accra</p>
-<p>🕰 12:00 PM</p>
-</div>
-
-<div class="card">
-<iframe src="https://www.google.com/maps?q=Madina+SDA+Accra&output=embed"
-width="100%" height="280" style="border:0;border-radius:15px;"></iframe>
+Fadama Central Mosque – 10:00 AM
+<iframe src="https://www.google.com/maps?q=Fadama+Central+Mosque+Accra&output=embed"></iframe>
+<a class="map-btn" target="_blank"
+href="https://www.google.com/maps/search/?api=1&query=Fadama+Central+Mosque+Accra">
+View in Google Maps
+</a>
+<a class="calendar-btn"
+href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Nikkah&dates=20260329T100000/20260329T120000&location=Fadama+Central+Mosque">
+Add to Calendar
+</a>
 </div>
 </section>
 
-<section id="rsvp">
+<div class="divider"></div>
+
+<section>
+<h2 class="sub">👰 Bride’s Gathering</h2>
+<div class="card">
+Foster International School – 12:00 PM
+<iframe src="https://www.google.com/maps?q=Foster+International+School+Kokomlemle&output=embed"></iframe>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+<h2 class="sub">🤵 Groom’s Gathering</h2>
+<div class="card">
+Cougar Street, Madina SDA – 12:00 PM
+<iframe src="https://www.google.com/maps?q=Madina+SDA+Accra&output=embed"></iframe>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<section>
+<h2 class="sub">Wedding Timeline</h2>
+<div class="timeline">
+<div>10:00 AM – Nikkah Ceremony</div>
+<div>12:00 PM – Bride’s Gathering</div>
+<div>12:00 PM – Groom’s Gathering</div>
+</div>
+</section>
+
+<div class="divider"></div>
+
+<section>
 <h2 class="sub">Confirm Attendance</h2>
-<p>Please let us know if you will be joining us on our special day.</p>
-
-<div class="card">
-<input type="text" id="nameInput" placeholder="Your Full Name">
+<input type="text" id="name" placeholder="Full Name">
 <select id="attendance">
 <option value="">Will you attend?</option>
 <option>Yes, I will attend</option>
 <option>Sorry, I can't make it</option>
 </select>
-<textarea id="message" placeholder="Message for the Couple (Optional)"></textarea>
+<textarea id="message" placeholder="Message for the couple (optional)"></textarea>
 <button onclick="sendRSVP()">Submit</button>
-</div>
 </section>
 
 <section>
-<h2 class="sub">RSVP Contacts</h2>
-
-<div class="contact">
-<h3>Rashad</h3>
-<a href="tel:0247647739" class="call">Call</a>
-<a href="https://wa.me/233247647739" class="wa">WhatsApp</a>
-</div>
-
-<div class="contact">
-<h3>Shehu</h3>
-<a href="tel:0530713449" class="call">Call</a>
-<a href="https://wa.me/233530713449" class="wa">WhatsApp</a>
-</div>
+<p>Your presence and sincere prayers will bring us immense joy and blessings on this special day.<br>
+Jazaakumullahu Khairan.</p>
 </section>
-
-<section>
-<p style="max-width:650px;margin:auto;font-style:italic;">
-Your presence and sincere prayers will bring us immense joy and blessings on this special day.
-Jazaakumullahu Khairan.
-</p>
-</section>
-
-<footer>
-Abdul-Wadud & Rukaya • 2026
-</footer>
-
-<div class="music" onclick="toggleMusic()">▶</div>
 
 <script>
-
-/* Opening */
-function enterSite(){
-document.getElementById("opening").style.display="none";
-document.body.classList.add("loaded");
-}
-
-/* Bubbles */
-for(let i=0;i<20;i++){
-let bubble=document.createElement("div");
-bubble.className="bubble";
-let size=Math.random()*40+15;
-bubble.style.width=size+"px";
-bubble.style.height=size+"px";
-bubble.style.left=Math.random()*100+"%";
-bubble.style.animationDuration=(Math.random()*10+15)+"s";
-bubble.style.opacity=Math.random()*0.6+0.2;
-document.body.appendChild(bubble);
-}
-
-/* Countdown */
-const eventDate=new Date("March 29, 2026 10:00:00").getTime();
-setInterval(()=>{
-const now=new Date().getTime();
-const distance=eventDate-now;
-document.getElementById("days").innerText=Math.floor(distance/(1000*60*60*24));
-document.getElementById("hours").innerText=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
-document.getElementById("minutes").innerText=Math.floor((distance%(1000*60*60))/(1000*60));
-document.getElementById("seconds").innerText=Math.floor((distance%(1000*60))/1000);
+window.addEventListener("load",()=>{
+setTimeout(()=>{
+document.getElementById("loader").style.display="none";
+document.getElementById("bgMusic").volume=0.3;
+document.getElementById("bgMusic").play();
 },1000);
+});
+
+/* Scroll progress */
+window.addEventListener("scroll",()=>{
+let winScroll=document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+document.getElementById("progress").style.width=(winScroll/height)*100+"%";
+});
+
+/* Dust trail */
+document.addEventListener("mousemove",(e)=>{
+let dust=document.createElement("div");
+dust.className="dust";
+dust.style.left=e.clientX+"px";
+dust.style.top=e.clientY+"px";
+document.body.appendChild(dust);
+setTimeout(()=>dust.remove(),1000);
+});
 
 /* RSVP */
 function sendRSVP(){
-const name=document.getElementById("nameInput").value;
-const attendance=document.getElementById("attendance").value;
-const message=document.getElementById("message").value;
+let name=document.getElementById("name").value;
+let attendance=document.getElementById("attendance").value;
 if(!name||!attendance){
-alert("Please fill required fields");
+alert("Please complete required fields");
 return;
 }
-const text=`Assalamu Alaikum,
-Name: ${name}
-Response: ${attendance}
-Message: ${message ? message : "No message"}
-Wedding: Abdul-Wadud & Rukaya`;
-window.open(`https://wa.me/233243202904?text=${encodeURIComponent(text)}`);
+window.location.href="https://wa.me/233243202904?text="+
+encodeURIComponent("Name: "+name+" Response: "+attendance);
 }
-
-/* Music */
-function toggleMusic(){
-const music=document.getElementById("music");
-if(music.paused){music.play();document.querySelector(".music").innerText="❚❚";}
-else{music.pause();document.querySelector(".music").innerText="▶";}
-}
-
-/* Scroll Progress */
-window.addEventListener("scroll",()=>{
-const winScroll=document.documentElement.scrollTop;
-const height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
-document.getElementById("progress").style.width=(winScroll/height)*100+"%";
-});
 </script>
 
 </body>
 </html>
-
-
