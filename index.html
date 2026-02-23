@@ -19,6 +19,42 @@ text-align:center;
 overflow-x:hidden;
 }
 
+/* Islamic animated background */
+.islamic-bg{
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:
+radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 60%),
+radial-gradient(circle at 20% 80%, rgba(212,175,55,0.08) 0%, transparent 50%),
+radial-gradient(circle at 80% 20%, rgba(212,175,55,0.08) 0%, transparent 50%);
+animation:slowDrift 30s ease-in-out infinite alternate;
+z-index:-3;
+pointer-events:none;
+}
+@keyframes slowDrift{
+0%{transform:scale(1);}
+100%{transform:scale(1.05);}
+}
+
+/* Gold shimmer particles */
+body::before{
+content:"";
+position:fixed;
+top:0;left:0;
+width:100%;height:100%;
+background:radial-gradient(circle, rgba(212,175,55,0.25) 1px, transparent 1px);
+background-size:80px 80px;
+opacity:0.08;
+animation:shimmerMove 40s linear infinite;
+pointer-events:none;
+z-index:-2;
+}
+@keyframes shimmerMove{
+0%{background-position:0 0;}
+100%{background-position:400px 400px;}
+}
+
 /* Floating hearts */
 .heart{
 position:fixed;
@@ -77,7 +113,7 @@ max-width:750px;
 margin:auto;
 }
 
-/* ENTER BUTTON */
+/* ENTER */
 .enter-wrapper{margin-top:40px;}
 .enter-btn{
 padding:14px 35px;
@@ -125,7 +161,7 @@ background:linear-gradient(90deg,#d4af37,#fff2a8,#d4af37);
 background-size:200% auto;
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
-animation:goldShimmer 6s linear infinite;
+animation:goldShimmer 6s linear infinite, nameFloat 6s ease-in-out infinite alternate;
 }
 .and-symbol{
 font-family:'Playfair Display',serif;
@@ -136,6 +172,10 @@ margin:8px 0;
 @keyframes goldShimmer{
 0%{background-position:0% center;}
 100%{background-position:200% center;}
+}
+@keyframes nameFloat{
+0%{transform:translateY(0);}
+100%{transform:translateY(-8px);}
 }
 
 /* Section titles */
@@ -201,10 +241,6 @@ border:none;
 font-size:15px;
 font-family:'Montserrat',sans-serif;
 }
-input:focus,textarea:focus{
-outline:none;
-box-shadow:0 0 10px rgba(212,175,55,0.6);
-}
 
 /* RSVP */
 .rsvp-btn{
@@ -250,6 +286,8 @@ z-index:5;
 </head>
 
 <body>
+
+<div class="islamic-bg"></div>
 
 <div id="cover">
 <div class="bismillah">بِسْمِ ٱللَّٰهِ ٱلرَّحْمَـٰنِ ٱلرَّحِيمِ</div>
@@ -361,6 +399,7 @@ document.getElementById("main").scrollIntoView({behavior:"smooth"});
 document.getElementById("music").play().catch(()=>{});
 }
 
+/* Countdown */
 const targetDate = new Date("March 29, 2026 10:00:00").getTime();
 setInterval(function(){
 let now = new Date().getTime();
@@ -371,6 +410,7 @@ document.getElementById("minutes").innerHTML = Math.floor((diff%(1000*60*60))/(1
 document.getElementById("seconds").innerHTML = Math.floor((diff%(1000*60))/1000);
 },1000);
 
+/* Attendance to both */
 document.getElementById("attendanceForm").addEventListener("submit", function(e){
 e.preventDefault();
 let name=document.getElementById("fullName").value;
@@ -381,6 +421,7 @@ window.open(`https://wa.me/233243779731?text=${text}`,"_blank");
 setTimeout(()=>{window.open(`https://wa.me/233243202904?text=${text}`,"_blank");},600);
 });
 
+/* Floating hearts */
 setInterval(()=>{
 const heart=document.createElement("div");
 heart.className="heart";
@@ -391,6 +432,7 @@ document.body.appendChild(heart);
 setTimeout(()=>heart.remove(),10000);
 },2000);
 
+/* Music */
 function toggleMusic(){
 let m=document.getElementById("music");
 let i=document.getElementById("icon");
