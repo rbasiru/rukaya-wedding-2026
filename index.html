@@ -19,9 +19,11 @@ color:#fff;
 
 text-align:center;
 
+overflow-x:hidden;
+
 }
 
-/* COVER */
+/* ================= COVER ================= */
 
 #cover{
 
@@ -57,11 +59,11 @@ z-index:1000;
 
 font-family:'Cormorant Garamond',serif;
 
-font-size:50px;
+font-size:52px;
 
 color:#d4af37;
 
-margin:5px 0;
+margin:6px 0;
 
 }
 
@@ -75,13 +77,15 @@ color:#f3d47a;
 
 margin-top:10px;
 
+letter-spacing:2px;
+
 }
 
 .enter-btn{
 
 margin-top:30px;
 
-padding:12px 30px;
+padding:12px 35px;
 
 background:#d4af37;
 
@@ -95,7 +99,7 @@ font-weight:bold;
 
 }
 
-/* MAIN */
+/* ================= MAIN ================= */
 
 #main{
 
@@ -103,15 +107,71 @@ display:none;
 
 padding:100px 20px;
 
+position:relative;
+
+}
+
+/* Animated Wedding Background */
+
+#main::before{
+
+content:"";
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:url("couple-bg.png") center/cover no-repeat;
+
+opacity:0.6;
+
+animation:zoom 25s ease-in-out infinite alternate;
+
+z-index:-2;
+
+}
+
+#main::after{
+
+content:"";
+
+position:fixed;
+
+top:0;
+
+left:0;
+
+width:100%;
+
+height:100%;
+
+background:rgba(0,0,0,0.45);
+
+z-index:-1;
+
+}
+
+@keyframes zoom{
+
+0%{transform:scale(1);}
+
+100%{transform:scale(1.1);}
+
 }
 
 .section{
 
-max-width:750px;
+max-width:800px;
 
 margin:80px auto;
 
-background:rgba(255,255,255,0.05);
+background:rgba(255,255,255,0.06);
 
 padding:40px;
 
@@ -145,13 +205,13 @@ flex-wrap:wrap;
 
 .time-box{
 
-background:rgba(212,175,55,0.15);
+background:rgba(212,175,55,0.2);
 
 padding:20px;
 
 border-radius:10px;
 
-min-width:80px;
+min-width:85px;
 
 }
 
@@ -161,7 +221,21 @@ margin:0;
 
 color:#d4af37;
 
-font-size:28px;
+font-size:30px;
+
+}
+
+.love{
+
+font-family:'Cormorant Garamond',serif;
+
+font-size:22px;
+
+font-style:italic;
+
+color:#f3d47a;
+
+line-height:1.8;
 
 }
 
@@ -211,7 +285,7 @@ cursor:pointer;
 
 .rsvp-card{
 
-background:rgba(255,255,255,0.08);
+background:rgba(255,255,255,0.1);
 
 padding:20px;
 
@@ -250,6 +324,70 @@ margin-top:100px;
 opacity:0.6;
 
 font-size:14px;
+
+}
+
+/* Music Button */
+
+.music-btn{
+
+position:fixed;
+
+bottom:25px;
+
+right:25px;
+
+background:linear-gradient(135deg,#d4af37,#fff2a8);
+
+border:none;
+
+width:55px;
+
+height:55px;
+
+border-radius:50%;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+font-size:22px;
+
+cursor:pointer;
+
+box-shadow:0 0 18px rgba(212,175,55,0.9);
+
+z-index:999;
+
+}
+
+/* Falling Love */
+
+.heart{
+
+position:fixed;
+
+top:-20px;
+
+font-size:22px;
+
+color:rgba(255,215,0,0.85);
+
+animation:fall 8s linear infinite;
+
+pointer-events:none;
+
+z-index:2;
+
+}
+
+@keyframes fall{
+
+0%{transform:translateY(-20px);}
+
+100%{transform:translateY(110vh);}
 
 }
 </style>
@@ -304,12 +442,12 @@ Sunday 29th March, 2026
 </div>
 <div class="section">
 <h2>The Beginning of Forever</h2>
-<p style="font-style:italic;">
+<div class="love">
 
 Together we will dance under starry skies, laugh until our sides ache and cherish every moment we are given.  
 
 Two hearts, one love, infinite joy begins.
-</p>
+</div>
 </div>
 <div class="section">
 <h2>Nikkah Ceremony</h2>
@@ -367,6 +505,7 @@ Jazaakumul Lahu Khairan.”
 Abdul-Wadud & Rukaya #2026
 </div>
 </div>
+<button class="music-btn" onclick="toggleMusic()">♫</button>
 <script>
 
 function openInvitation(){
@@ -376,6 +515,14 @@ document.getElementById("cover").style.display="none";
 document.getElementById("main").style.display="block";
 
 document.getElementById("bgMusic").play().catch(()=>{});
+
+}
+
+function toggleMusic(){
+
+let m=document.getElementById("bgMusic");
+
+if(m.paused){m.play();}else{m.pause();}
 
 }
 
@@ -397,21 +544,25 @@ document.getElementById("seconds").innerHTML=Math.floor((distance%(1000*60))/100
 
 },1000);
 
-function sendConfirm(e){
+/* Falling Love */
 
-e.preventDefault();
+setInterval(function(){
 
-let name=document.getElementById("name").value;
+let heart=document.createElement("div");
 
-let guests=document.getElementById("guests").value;
+heart.className="heart";
 
-let message=document.getElementById("message").value;
+heart.innerHTML="❤";
 
-let text=`Attendance Confirmation:%0AName: ${name}%0AGuests: ${guests}%0AMessage: ${message}`;
+heart.style.left=Math.random()*100+"vw";
 
-window.open("https://wa.me/233243202904?text="+text,"_blank");
+heart.style.animationDuration=(6+Math.random()*3)+"s";
 
-}
+document.body.appendChild(heart);
+
+setTimeout(()=>{heart.remove();},9000);
+
+},1200);
 </script>
 </body>
 </html>
