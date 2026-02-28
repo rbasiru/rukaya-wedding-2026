@@ -32,14 +32,13 @@ box-sizing:border-box;
 z-index:2000;
 transition:opacity 1s ease;
 }
-.cover-content{
-max-width:700px;
-}
+.cover-content{max-width:700px;}
 .names{
 font-family:'Cormorant Garamond',serif;
 font-size:58px;
 color:#d4af37;
 margin:6px 0;
+letter-spacing:2px;
 }
 .enter-btn{
 margin-top:30px;
@@ -51,7 +50,6 @@ border-radius:30px;
 cursor:pointer;
 font-weight:600;
 }
-/* Mobile Portrait */
 @media (max-width:768px){
 #cover{
 justify-content:flex-start;
@@ -67,7 +65,37 @@ padding:120px 20px 80px 20px;
 text-align:center;
 position:relative;
 }
-/* Animated Couple Background */
+/* Navigation */
+nav{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(6px);
+padding:15px 10px;
+text-align:center;
+z-index:1500;
+}
+nav a{
+color:#d4af37;
+margin:0 10px;
+text-decoration:none;
+font-size:13px;
+letter-spacing:1px;
+}
+nav a:hover{
+color:#fff2a8;
+}
+.section{
+max-width:850px;
+margin:100px auto;
+padding:40px;
+background:rgba(255,255,255,0.06);
+border-radius:20px;
+scroll-margin-top:120px;
+}
+/* Animated Background */
 #main::before{
 content:"";
 position:fixed;
@@ -86,19 +114,12 @@ top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.65);
+background:rgba(0,0,0,0.6);
 z-index:-1;
 }
 @keyframes zoom{
 0%{transform:scale(1);}
 100%{transform:scale(1.08);}
-}
-.section{
-max-width:850px;
-margin:100px auto;
-padding:40px;
-background:rgba(255,255,255,0.06);
-border-radius:20px;
 }
 .divider{
 width:180px;
@@ -204,10 +225,24 @@ cursor:pointer;
 box-shadow:0 0 18px rgba(212,175,55,0.9);
 z-index:999;
 }
+/* Subtle Falling Hearts */
+.heart{
+position:fixed;
+top:-10px;
+font-size:14px;
+color:rgba(255,215,0,0.35);
+animation:fall 12s linear infinite;
+pointer-events:none;
+z-index:0;
+}
+@keyframes fall{
+0%{transform:translateY(-10px);}
+100%{transform:translateY(110vh);}
+}
 </style>
 </head>
 <body>
-<audio id="bgMusic" src="wedding-music.mp3" autoplay loop></audio>
+<audio id="bgMusic" src="wedding-music.mp3" loop></audio>
 <!-- COVER -->
 <div id="cover">
 <div class="cover-content">
@@ -227,7 +262,15 @@ z-index:999;
 </div>
 <!-- MAIN -->
 <div id="main">
-<div class="section">
+<nav>
+<a href="#family">Family</a>
+<a href="#countdown">Countdown</a>
+<a href="#love">Love</a>
+<a href="#event">Event</a>
+<a href="#attendance">Attendance</a>
+<a href="#rsvp">RSVP</a>
+</nav>
+<div class="section" id="family">
 <h2>Family Invitation</h2>
 <p>The family of Alhaji Abdul-Wahab and the Late Imam Abass warmly invite you to celebrate the marriage of their beloved children.</p>
 </div>
@@ -238,7 +281,7 @@ z-index:999;
 <h1 style="font-family:'Cormorant Garamond',serif;font-size:60px;color:#d4af37;">RUKAYA</h1>
 </div>
 <div class="divider"></div>
-<div class="section">
+<div class="section" id="countdown">
 <h2>Countdown to Our Nikkah</h2>
 <div class="countdown-box">
 <div class="time-box"><h3 id="days"></h3><p>Days</p></div>
@@ -248,14 +291,18 @@ z-index:999;
 </div>
 </div>
 <div class="divider"></div>
-<div class="section">
-<h2>Our Love Story Begins</h2>
-<div class="love">
-Together we will dance under starry skies, laugh until our sides ache and cherish every moment we are given. Two hearts, one love, infinite joy begins.
+<div class="section" id="love">
+<h2 style="font-family:'Cormorant Garamond',serif;font-size:38px;color:#d4af37;">
+The Beginning of Forever
+</h2>
+<div class="love" style="margin-top:25px;">
+Together we will dance under starry skies, laugh until our sides ache and cherish every moment we are given.  
+Two hearts, one love, infinite joy begins.  
+Join us as we start this new journey hand in hand and heart in heart.
 </div>
 </div>
 <div class="divider"></div>
-<div class="section">
+<div class="section" id="event">
 <h2>Nikkah Ceremony</h2>
 <p>Sunday, 29th March 2026 — 10:00 AM</p>
 <p>Fadama Central Mosque, Accra</p>
@@ -272,8 +319,11 @@ Together we will dance under starry skies, laugh until our sides ache and cheris
 </div>
 </div>
 <div class="divider"></div>
-<div class="section">
+<div class="section" id="attendance">
 <h2>Confirm Your Attendance</h2>
+<p style="margin-bottom:30px;font-style:italic;color:#f3d47a;">
+Please let us know if you will be joining us on our special day. Kindly fill the form below to confirm your presence.
+</p>
 <form onsubmit="sendConfirm(event)">
 <input type="text" id="name" placeholder="Full Name" required>
 <select id="guests" required>
@@ -286,7 +336,7 @@ Together we will dance under starry skies, laugh until our sides ache and cheris
 </form>
 </div>
 <div class="divider"></div>
-<div class="section">
+<div class="section" id="rsvp">
 <h2>RSVP</h2>
 <p>Come share in our love and joy.</p>
 <div class="rsvp-card">
@@ -311,11 +361,14 @@ Together we will dance under starry skies, laugh until our sides ache and cheris
 <button class="music-btn" onclick="toggleMusic()">♫</button>
 <script>
 function openInvitation(){
-document.getElementById("cover").style.opacity="0";
+let cover=document.getElementById("cover");
+let music=document.getElementById("bgMusic");
+cover.style.opacity="0";
 setTimeout(function(){
-document.getElementById("cover").style.display="none";
+cover.style.display="none";
 document.getElementById("main").style.display="block";
 },800);
+music.play().catch(()=>{});
 }
 let wedding=new Date("March 29, 2026 10:00:00").getTime();
 setInterval(function(){
@@ -338,7 +391,16 @@ function toggleMusic(){
 var m=document.getElementById("bgMusic");
 if(m.paused){m.play();}else{m.pause();}
 }
+/* Subtle falling love */
+setInterval(function(){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="❤";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(10+Math.random()*6)+"s";
+document.body.appendChild(heart);
+setTimeout(()=>{heart.remove();},15000);
+},2500);
 </script>
 </body>
-</html>
- 
+</html> 
