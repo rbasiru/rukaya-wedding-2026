@@ -14,7 +14,7 @@ color:#fff;
 text-align:center;
 overflow-x:hidden;
 }
-/* ================= COVER ================= */
+/* COVER PAGE */
 #cover{
 position:fixed;
 top:0;
@@ -28,7 +28,6 @@ justify-content:center;
 align-items:center;
 padding:20px;
 z-index:1000;
-transition:opacity 0.6s ease;
 }
 .names{
 font-family:'Cormorant Garamond',serif;
@@ -52,13 +51,13 @@ border-radius:25px;
 cursor:pointer;
 font-weight:bold;
 }
-/* ================= MAIN ================= */
+/* MAIN PAGE */
 #main{
 display:none;
 padding:100px 20px;
 position:relative;
 }
-/* Animated Background */
+/* background animation */
 #main::before{
 content:"";
 position:fixed;
@@ -92,7 +91,6 @@ background:rgba(255,255,255,0.06);
 padding:40px;
 border-radius:15px;
 }
-/* Elegant Divider */
 .section h2{
 position:relative;
 display:inline-block;
@@ -110,7 +108,7 @@ border-radius:2px;
 }
 .section h3{
 color:#f3d47a;
-margin-top:50px;
+margin-top:40px;
 }
 .countdown-date{
 font-family:'Cormorant Garamond',serif;
@@ -186,7 +184,6 @@ margin-top:100px;
 opacity:0.6;
 font-size:14px;
 }
-/* Music Button */
 .music-btn{
 position:fixed;
 bottom:25px;
@@ -204,7 +201,7 @@ cursor:pointer;
 box-shadow:0 0 18px rgba(212,175,55,0.9);
 z-index:999;
 }
-/* Falling Love */
+/* falling hearts */
 .heart{
 position:fixed;
 top:-20px;
@@ -231,30 +228,22 @@ z-index:2;
 <div class="names">&</div>
 <div class="names">RUKAYA</div>
 <div class="cover-date">
-Sunday 29th March, 2026
+Sunday 29th March 2026
 </div>
-<p style="max-width:500px;font-size:14px;margin-top:20px;">
-وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً
-<br><br>
-“And among His signs is that He created for you spouses from among yourselves that you may find tranquility in them; and He placed between you affection and mercy.” — Surah Ar-Rum (30:21)
-</p>
-<button class="enter-btn" onclick="openInvitation()">Tap Here for Details</button>
+<button class="enter-btn" onclick="openInvitation()">
+Tap Here for Details
+</button>
 </div>
 <!-- MAIN -->
 <div id="main">
 <div class="section">
 <h2>Family Invitation</h2>
-<p>The family of Alhaji Abdul-Wahab and the Late Imam Abass warmly invite you to celebrate the marriage of their beloved children.</p>
-</div>
-<div class="section">
-<h1 style="font-family:'Cormorant Garamond',serif;color:#d4af37;">ABDUL-WADUD</h1>
-<h2 style="color:#d4af37;">&</h2>
-<h1 style="font-family:'Cormorant Garamond',serif;color:#d4af37;">RUKAYA</h1>
+<p>The family of Alhaji Abdul-Wahab and the Late Imam Abass warmly invite you to celebrate the marriage ceremony of their beloved children.</p>
 </div>
 <div class="section">
 <h2>Countdown</h2>
 <div class="countdown-date">
-Sunday 29th March, 2026
+Sunday 29th March 2026
 </div>
 <div class="countdown-box">
 <div class="time-box"><h3 id="days"></h3><p>Days</p></div>
@@ -271,30 +260,33 @@ Two hearts, one love, infinite joy begins.
 </div>
 </div>
 <div class="section">
-<h2>✨ Nikkah Ceremony ✨</h2>
-<p>Sunday, 29th March 2026 — 10:00 AM</p>
+<h2>Nikkah Ceremony</h2>
+<p>Sunday 29th March 2026 — 10:00 AM</p>
 <p>Fadama Central Mosque, Accra</p>
 <iframe src="https://www.google.com/maps?q=Fadama+Central+Mosque+Accra&output=embed"></iframe>
-<h3>🌙 Groom Gathering</h3>
-<p>12:00 PM — Madina Astroturf, Accra</p>
+<h3>Bride Gathering</h3>
+<p>12:00 PM — Foster International School, Cotton Avenue – Kokomlemle</p>
+<iframe src="https://www.google.com/maps?q=Foster+International+School+Kokomlemle&output=embed"></iframe>
+<h3>Groom Gathering</h3>
+<p>2:00 PM — Madina Astroturf, Accra</p>
 <iframe src="https://www.google.com/maps?q=Madina+Astroturf+Accra&output=embed"></iframe>
-<h3>💍 Bride Gathering</h3>
-<p>12:00 PM — Foster International School, Kokomlemle</p>
-<iframe src="https://www.google.com/maps?q=Foster+International+School+Kokomlemle+Accra&output=embed"></iframe>
 </div>
 <div class="section">
 <h2>Confirm Your Attendance</h2>
 <p style="font-style:italic;color:#f3d47a;">
 Please let us know if you will be joining us on our special day.
 </p>
-<form>
-<input type="text" placeholder="Full Name" required>
-<select required>
+<form onsubmit="sendConfirm(event)">
+<input type="text" id="name" placeholder="Full Name" required>
+<select id="guests" required>
 <option value="">Number of Guests</option>
-<option>1</option><option>2</option><option>3</option>
-<option>4</option><option>5</option>
+<option>1</option>
+<option>2</option>
+<option>3</option>
+<option>4</option>
+<option>5</option>
 </select>
-<textarea placeholder="Send goodwill message to couple (Optional)"></textarea>
+<textarea id="message" placeholder="Send goodwill message to couple (Optional)"></textarea>
 <button type="submit">Submit</button>
 </form>
 </div>
@@ -311,11 +303,16 @@ Please let us know if you will be joining us on our special day.
 <a href="tel:0247647739" class="btn call">Call</a>
 <a href="https://wa.me/233247647739" class="btn whatsapp" target="_blank">WhatsApp</a>
 </div>
+<div class="rsvp-card">
+<h3>Charlotte</h3>
+<a href="tel:0548025237" class="btn call">Call</a>
+<a href="https://wa.me/233548025237" class="btn whatsapp" target="_blank">WhatsApp</a>
+</div>
 </div>
 <div class="section">
 <p style="font-style:italic;">
-“Your presence and prayers will bring us great joy and blessings on this special day.  
-Jazaakumul Lahu Khairan.”
+Your presence and prayers will bring us great joy and blessings on this special day.  
+Jazaakumul Lahu Khairan.
 </p>
 </div>
 <div class="footer">
@@ -331,7 +328,8 @@ document.getElementById("bgMusic").play().catch(()=>{});
 }
 function toggleMusic(){
 let m=document.getElementById("bgMusic");
-if(m.paused){m.play();}else{m.pause();}
+if(m.paused){m.play();}
+else{m.pause();}
 }
 let wedding=new Date("March 29, 2026 10:00:00").getTime();
 setInterval(function(){
@@ -342,6 +340,17 @@ document.getElementById("hours").innerHTML=Math.floor((distance%(1000*60*60*24))
 document.getElementById("minutes").innerHTML=Math.floor((distance%(1000*60*60))/(1000*60));
 document.getElementById("seconds").innerHTML=Math.floor((distance%(1000*60))/1000);
 },1000);
+function sendConfirm(e){
+e.preventDefault();
+let name=document.getElementById("name").value;
+let guests=document.getElementById("guests").value;
+let message=document.getElementById("message").value;
+let text=`Attendance Confirmation:
+Name: ${name}
+Guests: ${guests}
+Message: ${message}`;
+window.open("https://wa.me/233243202904?text="+encodeURIComponent(text));
+}
 setInterval(function(){
 let heart=document.createElement("div");
 heart.className="heart";
